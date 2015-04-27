@@ -1,0 +1,160 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\input{babelbst.tex}
+\newcommand{\Capitalize}[1]{\uppercase{#1}}
+\newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{Buerkle \& Gompert(2013)}]{buerkle2013popModels}
+Buerkle CA, Gompert Z (2013) Population genomics based on low coverage
+  sequencing: how low should we go?
+\newblock \emph{Molecular Ecology}, \textbf{22}, 3028--3035.
+
+\bibitem[{Cannon \emph{\bbletal{}}(2014)Cannon, McKain, Harkess
+  \emph{\bbletal{}}}]{canon2014polyploidyLegumes}
+Cannon SB, McKain MR, Harkess A, \emph{\bbletal{}} (2014) Multiple polyploidy
+  events in the early radiation of nodulating and nonnodulating legumes.
+\newblock \emph{Molecular Biology and Evolution}, \textbf{32}, 193--210.
+
+\bibitem[{Comai(2005)}]{comai2005polyploid}
+Comai L (2005) The advantages and disadvantages of being polyploid.
+\newblock \emph{Nature Reviews. Genetics}, \textbf{6}, 836--846.
+
+\bibitem[{Cui \emph{\bbletal{}}(2006)Cui, Wall, Leebens-Mack
+  \emph{\bbletal{}}}]{cui2006genomeDuplication}
+Cui L, Wall PK, Leebens-Mack JH, \emph{\bbletal{}} (2006) Widespread genome
+  duplications throughout the history of flowering plants.
+\newblock \emph{Genome Research}, \textbf{16}, 738--749.
+
+\bibitem[{Douglas \emph{\bbletal{}}(2015)Douglas, Gos, Steige
+  \emph{\bbletal{}}}]{douglas2015diploidizationCapsella}
+Douglas G, Gos G, Steige K, \emph{\bbletal{}} (2015) Hybrid origins and the
+  earliest stages of diploidization in the highly successful recent polyploid
+  \textit{{Capsella} bursa-pastoris}.
+\newblock \emph{bioRxiv}, \textbf{doi}, http://dx.doi.org/10.1101/006783.
+
+\bibitem[{Dufresne \emph{\bbletal{}}(2014)Dufresne, Stift, Vergilino, \&
+  Malbe}]{dufresne2014polyPopGen}
+Dufresne F, Stift M, Vergilino R, Malbe BK (2014) Recent progress and
+  challenges in population genetics of polyploid organisms: an overview of
+  current state-of-the-art molecular and statistical tools.
+\newblock \emph{Molecular Ecology}, \textbf{23}, 40--69.
+
+\bibitem[{Gelman \emph{\bbletal{}}(2014)Gelman, Carlin, Stern, Dunson, Vehtari,
+  \& Rubin}]{gelman2014bayesian}
+Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB (2014)
+  \emph{Bayesian data analysis}.
+\newblock Chapman \& Hall/CRC Press, \bblthirdo{} \bbledn{}.
+
+\bibitem[{Haldane(1930)}]{haldane1930autopolyploids}
+Haldane JBS (1930) Theoretical genetics of autopolyploids.
+\newblock \emph{Journal of Genetics}, \textbf{22}, 359--372.
+
+\bibitem[{Jiao \emph{\bbletal{}}(2011)Jiao, Wickett, Ayyampalayam
+  \emph{\bbletal{}}}]{jiao2011ancientWGD}
+Jiao Y, Wickett NJ, Ayyampalayam S, \emph{\bbletal{}} (2011) Ancestral
+  polyploidy in seed plants and angiosperms.
+\newblock \emph{Nature}, \textbf{473}, 97--100.
+
+\bibitem[{Kimura(1964)}]{kimura1964diffusion}
+Kimura M (1964) Diffusion models in population genetics.
+\newblock \emph{Journal of Applied Probability}, \textbf{1}, 177--232.
+
+\bibitem[{Logan-Young \emph{\bbletal{}}(2015)Logan-Young, Yu, Verma, Percy, \&
+  Pepper}]{logan-young2015polyploidSNP}
+Logan-Young CJ, Yu JZ, Verma SK, Percy RG, Pepper AE (2015) {SNP} discovery in
+  complex allotetraploid genomes (\textit{{Gossypium}} spp., {Malvaceae}) using
+  genotyping by sequencing.
+\newblock \emph{Applications in Plant Sciences}, \textbf{3}, 1400077.
+
+\bibitem[{Moody \emph{\bbletal{}}(1993)Moody, Mueller, \&
+  Soltis}]{moody1993autopolyploids}
+Moody ML, Mueller LD, Soltis DE (1993) Genetic variation and random drift in
+  autotetraploid populations.
+\newblock \emph{Genetics}, \textbf{134}, 649--657.
+
+\bibitem[{Otto \& Whitton(2000)}]{otto2000polyploidy}
+Otto SP, Whitton J (2000) Polyploid incidence and evolution.
+\newblock \emph{Annual Review of Genetics}, \textbf{34}, 401--437.
+
+\bibitem[{Plummer \emph{\bbletal{}}(2006)Plummer, Best, Cowles, \&
+  Vines}]{plummer2006coda}
+Plummer M, Best N, Cowles K, Vines K (2006) {CODA}: {Convergence} {Diagnostics}
+  and {Output} {Analysis} for {MCMC}.
+\newblock \emph{R News}, \textbf{6}, 7--11.
+
+\bibitem[{{R Core Team}(2014)}]{r2014}
+{R Core Team} (2014) \emph{R: a language and environment for statistical
+  computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[{Selmecki \emph{\bbletal{}}(2015)Selmecki, Maruvka, Richmond
+  \emph{\bbletal{}}}]{Selmecki2015yeastAdaptation}
+Selmecki AM, Maruvka YE, Richmond PA, \emph{\bbletal{}} (2015) Polyploidy can
+  drive rapid adaptation in yeast.
+\newblock \emph{Nature}, \textbf{519}, 349--352.
+
+\bibitem[{Soltis \emph{\bbletal{}}(2009)Soltis, Albert, Leebens-Mack
+  \emph{\bbletal{}}}]{soltisd2009diversification}
+Soltis DE, Albert VA, Leebens-Mack J, \emph{\bbletal{}} (2009) Polyploidy and
+  angiosperm diversification.
+\newblock \emph{American Journal of Botany}, \textbf{96}, 336--348.
+
+\bibitem[{Soltis \emph{\bbletal{}}(2010)Soltis, Buggs, Doyle, \&
+  Soltis}]{soltisd2010polyploidUnknowns}
+Soltis DE, Buggs RJA, Doyle JJ, Soltis PS (2010) What we still don't know about
+  polyploidy.
+\newblock \emph{Taxon}, \textbf{59}, 1387--1403.
+
+\bibitem[{Soltis \emph{\bbletal{}}(2004)Soltis, Soltis, Pires, Kovarik, Tate,
+  \& Mavrodiev}]{soltisd2004tragopogon}
+Soltis DE, Soltis PS, Pires JC, Kovarik A, Tate JA, Mavrodiev E (2004) Recent
+  and recurrent polyploidy in tragopogon (asteraceae): cytogenetic, genomic and
+  genetic comparisons.
+\newblock \emph{Biological Journal of the Linnean Society}, \textbf{82},
+  485--501.
+
+\bibitem[{Soltis \emph{\bbletal{}}(2003)Soltis, Soltis, \&
+  Tate}]{soltisD2003polyploid}
+Soltis DE, Soltis PS, Tate JA (2003) Advances in the study of polyploidy since
+  plant speciation.
+\newblock \emph{New Phytologist}, \textbf{161}, 173--191.
+
+\bibitem[{Soltis \emph{\bbletal{}}(2014)Soltis, Visger, \&
+  Soltis}]{soltisd2014stebbins}
+Soltis DE, Visger CJ, Soltis PS (2014) The polyploidy revolution then...and
+  now: Stebbins revisited.
+\newblock \emph{American Journal of Botany}, \textbf{101}, 1057--1078.
+
+\bibitem[{Soltis \& Soltis(2000)}]{soltis2000PNASployploidy}
+Soltis PS, Soltis DE (2000) The role of genetic and genomic attributes in the
+  success of polyploids.
+\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{97},
+  7051--7057.
+
+\bibitem[{Stebbins(1950)}]{StebbinsVariationEvolution}
+Stebbins GL (1950) \emph{Variation and evolution in plants}.
+\newblock Columbia University Press.
+
+\bibitem[{Wagner(1970)}]{wagner1970noise}
+Wagner WH (1970) Biosystematics and evolutionary noise.
+\newblock \emph{Taxon}, \textbf{19}, 146--151.
+
+\bibitem[{Wickham(2007)}]{wickham2007reshape}
+Wickham H (2007) Reshaping data with the {reshape} package.
+\newblock \emph{Journal of Statistical Software}, \textbf{21}, 1--20.
+
+\bibitem[{Wickham(2009)}]{wickham2009ggplot2}
+Wickham H (2009) \emph{ggplot2: elegant graphics for data analysis}.
+\newblock Springer New York.
+
+\bibitem[{Wickham(2011)}]{wickham2011plyr}
+Wickham H (2011) The split-apply-combine strategy for data analysis.
+\newblock \emph{Journal of Statistical Software}, \textbf{40}, 1--29.
+
+\bibitem[{Wright(1938)}]{wright1938polyploid}
+Wright S (1938) The distribution of gene frequencies in populations of
+  polyploids.
+\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{24},
+  372--377.
+
+\end{thebibliography}

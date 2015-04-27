@@ -1,0 +1,9 @@
+*.Rhistory
+*.RData
+*.Rproj
+*.Rout
+.Rproj.user
+.DS_Store
+*.html
+*~
+5ind
