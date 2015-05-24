@@ -10,12 +10,12 @@ See Blischak *et al*. (2015) for more details on the model.
 The `doc/` folder contains all of the files associated with the manuscript for the **polyfreqs** model, including the original TeX 
 file. The document can be recreated (with an appropriate LaTeX distribution) with the following series of commands:
 
-'''bash
+```bash
 pdflatex polyfreqs-ms
 bibtex polyfreqs-ms
 pdflatex polyfreqs-ms
 pdflatex polyfreqs-ms
-'''
+```
 
 ## `code/`
 
