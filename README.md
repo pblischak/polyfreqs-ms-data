@@ -5,9 +5,9 @@ See Blischak *et al*. (2015) for more details on the model.
 
 ## Getting the scripts
 
-## 'doc/'
+## `doc/`
 
-The 'doc/' folder contains all of the files associated with the manuscript for the **polyfreqs** model, including the original TeX 
+The `doc/` folder contains all of the files associated with the manuscript for the **polyfreqs** model, including the original TeX 
 file. The document can be recreated (with an appropriate LaTeX distribution) with the following series of commands:
 
 '''bash
@@ -17,10 +17,10 @@ pdflatex polyfreqs-ms
 pdflatex polyfreqs-ms
 '''
 
-## 'code/'
+## `code/`
 
 This directory has all of the summary data (means of means) for the posterior distributions of allele frequencies for the 
 
-## 'fig/'
+## `fig/`
 
 Contains all of the figures for the manuscript in raw format (i.e., prior to manipulation in Inkscape).
