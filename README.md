@@ -5,6 +5,12 @@ See Blischak *et al*. (2015) for more details on the model.
 
 ## Getting the scripts
 
+These scripts can be obtained by simply cloning this git repository using the command:
+
+```
+git clone https://github.com/pblischak/polyfreqs-ms-data.git
+```
+
 ## `doc/`
 
 The `doc/` folder contains all of the files associated with the manuscript for the **polyfreqs** model, including the original TeX 
