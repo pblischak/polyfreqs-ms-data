@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 MAY 2015 07:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  26 MAY 2015 09:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -820,7 +820,7 @@ e/2014/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/
 14/texmf-dist/fonts/type1/public/cm-super/sfss0600.pfb></usr/local/texlive/2014
 /texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texlive/2014/t
 exmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on polyfreqs-ms.pdf (14 pages, 363932 bytes).
+Output written on polyfreqs-ms.pdf (14 pages, 363770 bytes).
 PDF statistics:
  306 PDF objects out of 1000 (max. 8388607)
  258 compressed objects within 3 object streams

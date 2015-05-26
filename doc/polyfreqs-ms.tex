@@ -141,7 +141,7 @@ The joint posterior distribution of allele frequencies and genotypes is equal to
 \noindent The marginal posterior distribution for allele frequencies can then be obtained by summing over genotypes
 
 \begin{equation}\label{marg_post_p}
-{P}(\,\bm{p}|\bm{R},\epsilon) \propto \displaystyle\sum_{g_{i \ell}\in\bm{G}} {P}(\,\bm{p},\bm{G}|\bm{R},\epsilon)\,.
+{P}(\,\bm{p}|\bm{R},\epsilon) \propto \displaystyle\sum_{\bm{G}} {P}(\,\bm{p},\bm{G}|\bm{R},\epsilon)\,.
 \end{equation}
 
 \noindent It would also be possible to examine the marginal posterior distribution of genotypes but here we focus on allele frequencies only.
@@ -220,7 +220,7 @@ Another potential source of bias is treating genotypes among individuals in the 
 Talk about the adequacy of the model for descrigin biological reality of polyploids. Emphasize the fact that the model directly contributes to ameliorate the issues associated with ADU.
 
 \begin{equation}
-P(\tilde{\bm{R}}|\bm{R}) = \displaystyle\int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R})\right) \text{d}\bm{p}\, .
+P(\tilde{\bm{R}}|\bm{R},\epsilon) = \displaystyle\int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R},\epsilon)\right) \text{d}\bm{p}\, .
 \end{equation}
 
 \medskip
