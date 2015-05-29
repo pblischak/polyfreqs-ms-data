@@ -161,7 +161,7 @@ The joint posterior distribution of allele frequencies and genotypes is equal to
 The full conditional distribution for genotypes is split into $\psi+1$ cases (similar to the conditional prior), making it a discrete categorical distribution over the possible values for the genotypes $(0,\ldots,\psi)$. Using $k$ as a generic index, the distribution for individual $i$ at locus $\ell$ is
 
 \begin{equation}\label{G-full}
-{P}(g_{i \ell}|g_{\text{-}i \ell},p,r_{i \ell},\epsilon) = \frac{1}{\mathcal{C}} \;
+{P}(g_{i \ell}|g_{(\text{-}i) \ell},p,r_{i \ell},\epsilon) = \frac{1}{\mathcal{C}} \;
 	\begin{cases}
 	\epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p)^\psi & \text{for  } k = 0, \\[0.05in]
 	\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\displaystyle\binom{\psi}{k}p^{k}\,(1-p)^{\psi-k} & \text{for  } k = 1,\ldots,\psi-1, \\[0.05in]
@@ -169,7 +169,7 @@ The full conditional distribution for genotypes is split into $\psi+1$ cases (si
 	\end{cases} 
 \end{equation}
 
-\noindent where $g_{\text{-}i \ell}$ is the value of the genotypes for all sampled individuals excluding individual $i$ and $\mathcal{C}$ is a normalizing constant equal to the sum of all of the terms:
+\noindent where $g_{(\text{-}i) \ell}$ is the value of the genotypes for all sampled individuals excluding individual $i$ and $\mathcal{C}$ is a normalizing constant equal to the sum of all of the terms:
 
 \begin{equation*}
 \mathcal{C} = \epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p)^\psi + (1-\epsilon)^{r_{i \ell}}\epsilon^{t_{i \ell}-r_{i \ell}}p^\psi + \sum_{k=1}^{\psi-1}\left(\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\binom{\psi}{k}\,p^k(1-p)^{\psi-k}\right).
@@ -217,10 +217,10 @@ Another potential source of bias is treating genotypes among individuals in the 
 \subsection*{Model adequacy}
 \medskip
 
-Talk about the adequacy of the model for descrigin biological reality of polyploids. Emphasize the fact that the model directly contributes to ameliorate the issues associated with ADU.
+Talk about the adequacy of the model for describing biological reality of polyploids. Emphasize the fact that the model directly contributes to ameliorate the issues associated with ADU.
 
 \begin{equation}
-P(\tilde{\bm{R}}|\bm{R},\epsilon) = \displaystyle\int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R},\epsilon)\right) \text{d}\bm{p}\, .
+P(\tilde{\bm{R}}|\bm{R},\epsilon) = \int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R},\epsilon)\right) \text{d}\bm{p}\, .
 \end{equation}
 
 \medskip
