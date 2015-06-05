@@ -1,8 +1,13 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{40}
 \providecommand{\natexlab}[1]{#1}
 \input{babelbst.tex}
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
 \newcommand{\capitalize}[1]{\expandafter\Capitalize#1}
+
+\bibitem[{Allendorf \& Thorgaard(1984)}]{allendorf1984tetraploidFish}
+Allendorf FW, Thorgaard GH (1984) \emph{Tetraploidy and the evolution of
+  salmonid fishes. In: Evolutionary genetics of fishes}.
+\newblock Edited by B. J. Turner. Plenum Press, pp. 1--53.
 
 \bibitem[{Buerkle \& Gompert(2013)}]{buerkle2013popModels}
 Buerkle CA, Gompert Z (2013) Population genomics based on low coverage
@@ -14,6 +19,20 @@ Buerkle CA, Gompert Z (2013) Population genomics based on low coverage
 Cannon SB, McKain MR, Harkess A, \emph{\bbletal{}} (2014) Multiple polyploidy
   events in the early radiation of nodulating and nonnodulating legumes.
 \newblock \emph{Molecular Biology and Evolution}, \textbf{32}, 193--210.
+
+\bibitem[{Clausen \emph{\bbletal{}}(1940, 520)Clausen, Keck, \&
+  Hiesey}]{ClausKeckHies1940}
+Clausen J, Keck DD, Hiesey WM (1940, 520) \emph{Experimental studies on the
+  nature of species. I. Effect of varied environments on western American
+  plants}.
+\newblock Carnegie Inst. Washington Publ.
+
+\bibitem[{Clausen \emph{\bbletal{}}(1945, 564)Clausen, Keck, \&
+  Hiesey}]{ClausKeckHies1945polyploidy}
+Clausen J, Keck DD, Hiesey WM (1945, 564) \emph{Experimental studies on the
+  nature of species. II. Plant evolution through amphiploidy and autoploidy,
+  with examples from {Madiinae}.}
+\newblock Carnegie Inst. Washington Publ.
 
 \bibitem[{Comai(2005)}]{comai2005polyploid}
 Comai L (2005) The advantages and disadvantages of being polyploid.
@@ -39,11 +58,25 @@ Dufresne F, Stift M, Vergilino R, Malbe BK (2014) Recent progress and
   current state-of-the-art molecular and statistical tools.
 \newblock \emph{Molecular Ecology}, \textbf{23}, 40--69.
 
+\bibitem[{Furlong \& Holland(2001)}]{furlong2001animalOctoploid}
+Furlong RF, Holland PWH (2001) Were vertebrates octoploid?
+\newblock \emph{Philosophical Transactions of the Royal Society B: Biological
+  Sciences}, \textbf{357}, 531--544.
+
 \bibitem[{Gelman \emph{\bbletal{}}(2014)Gelman, Carlin, Stern, Dunson, Vehtari,
   \& Rubin}]{gelman2014bayesian}
 Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB (2014)
   \emph{Bayesian data analysis}.
 \newblock Chapman \& Hall/CRC Press, \bblthirdo{} \bbledn{}.
+
+\bibitem[{Grant(1971)}]{GrantPlantSpeciation}
+Grant V (1971) \emph{Plant speciation}.
+\newblock Columbia University Press.
+
+\bibitem[{Gregory \& Mable(2005)}]{gregory2005polyploidyAnimals}
+Gregory TR, Mable BK (2005) \emph{Polyploidy in animals. In: The evolution of
+  the genome}.
+\newblock Edited by T. R. Gregory. Elsevier, pp. 427--517.
 
 \bibitem[{Haldane(1930)}]{haldane1930autopolyploids}
 Haldane JBS (1930) Theoretical genetics of autopolyploids.
@@ -72,6 +105,10 @@ Moody ML, Mueller LD, Soltis DE (1993) Genetic variation and random drift in
   autotetraploid populations.
 \newblock \emph{Genetics}, \textbf{134}, 649--657.
 
+\bibitem[{Ohno(1970)}]{ohno1970geneDuplication}
+Ohno S (1970) \emph{Evolution by gene duplication}.
+\newblock Springer.
+
 \bibitem[{Otto \& Whitton(2000)}]{otto2000polyploidy}
 Otto SP, Whitton J (2000) Polyploid incidence and evolution.
 \newblock \emph{Annual Review of Genetics}, \textbf{34}, 401--437.
@@ -86,6 +123,12 @@ Plummer M, Best N, Cowles K, Vines K (2006) {CODA}: {Convergence} {Diagnostics}
 {R Core Team} (2014) \emph{R: a language and environment for statistical
   computing}.
 \newblock R Foundation for Statistical Computing, Vienna, Austria.
+
+\bibitem[{Scarpino \emph{\bbletal{}}(2014)Scarpino, Levin, \&
+  Meyers}]{scarpino2014polyploid}
+Scarpino SV, Levin DA, Meyers LA (2014) Polyploid formation shapes flowering
+  plant diversity.
+\newblock \emph{American Naturalist}, \textbf{184}, doi: 10.1086/677752.
 
 \bibitem[{Selmecki \emph{\bbletal{}}(2015)Selmecki, Maruvka, Richmond
   \emph{\bbletal{}}}]{Selmecki2015yeastAdaptation}
@@ -131,6 +174,10 @@ Soltis PS, Soltis DE (2000) The role of genetic and genomic attributes in the
 \newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{97},
   7051--7057.
 
+\bibitem[{Soltis \& Soltis(2009)}]{soltai2009roleOfHybridization}
+Soltis PS, Soltis DE (2009) The role of hybridization in plant speciation.
+\newblock \emph{Annual Review of Plant Biology}, \textbf{60}, 561--588.
+
 \bibitem[{Stebbins(1950)}]{StebbinsVariationEvolution}
 Stebbins GL (1950) \emph{Variation and evolution in plants}.
 \newblock Columbia University Press.
@@ -150,6 +197,22 @@ Wickham H (2009) \emph{ggplot2: elegant graphics for data analysis}.
 \bibitem[{Wickham(2011)}]{wickham2011plyr}
 Wickham H (2011) The split-apply-combine strategy for data analysis.
 \newblock \emph{Journal of Statistical Software}, \textbf{40}, 1--29.
+
+\bibitem[{Winge(1917)}]{winge1917polyploidy}
+Winge O (1917) The chromosomes: their number and general importance.
+\newblock \emph{Compt. Rend. Trav. Lab. Carlsberg}, \textbf{13}, 131--275.
+
+\bibitem[{Winkler(1916)}]{Winkler1916polyploidy}
+Winkler H (1916) \"{U}ber die experimentelle {Erzeugung} von {Pflanzen} mit
+  abweichenden {Chromosomenzahlen}.
+\newblock \emph{Zeitschr. f. Bot.}, \textbf{8}, 417--531.
+
+\bibitem[{Wood \emph{\bbletal{}}(2009)Wood, Takebayashi, Barker, Mayrose,
+  Greenspoon, \& Rieseberg}]{wood2009polyploid}
+Wood TE, Takebayashi N, Barker MS, Mayrose I, Greenspoon PB, Rieseberg LH
+  (2009) The frequency of polyploid speciation in vascular plants.
+\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{106},
+  13875--13879.
 
 \bibitem[{Wright(1938)}]{wright1938polyploid}
 Wright S (1938) The distribution of gene frequencies in populations of

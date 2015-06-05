@@ -21,9 +21,10 @@
 \usepackage{natbib}
 \setcitestyle{citesep={;},aysep={}}
 \usepackage{babel}
+\usepackage{datetime}
 \pagestyle{plain}
 \frenchspacing
-\doublespacing
+%\doublespacing
 \usepackage{sectsty}
 \usepackage[table]{xcolor}
 \allsectionsfont{\bfseries}
@@ -35,12 +36,14 @@
 
 \newcommand{\tmat}{$\bm{T}$}
 \newcommand{\rmat}{$\bm{R}$}
+\newdateformat{mydate}{\THEDAY{} \monthname[\THEMONTH], \THEYEAR}
 
-\vspace*{0.25in}
+\hfill Version dated: \mydate\today
+\vspace{0.25in}
 
 \begin{center}
 
-{\Large \textbf{Estimating allele frequencies in non-model polyploids using high throughput sequencing data}}
+{\LARGE \bfseries Estimating allele frequencies in non-model polyploids using high throughput sequencing data}
 \vspace{0.45in}
 
 Paul D. Blischak,$^{1,\dagger}$ Laura S. Kubatko$^{1,2}$ and Andrea D. Wolfe$^1$
@@ -63,27 +66,30 @@ Paul D. Blischak,$^{1,\dagger}$ Laura S. Kubatko$^{1,2}$ and Andrea D. Wolfe$^1$
 
 
 \noindent $^\dagger$\textbf{Corresponding author}: Paul Blischak, Dept. of Evolution, Ecology and Organismal Biology, Aronoff Laboratory, The Ohio State University, 318 W. 12th Avenue, Columbus, OH 43210. E-mail: blischak.4@osu.edu.
-\vspace{0.45in}
 
-\noindent \textbf{Keywords}: polyploidy, population genomics, hierarchical Bayesian modeling, RAD sequencing, \textsc{polyfreqs}
-\vspace{0.45in}
+\vspace{0.25in}
 
 \noindent \textbf{Running title}: Allele frequencies in polyploids
 
-\vfill
+\vspace{.25in}
 
 %%%%%%%%%%%%%%%%%%%%
 \section*{Abstract}                      %%
 %%%%%%%%%%%%%%%%%%%%
 
 Despite the ever increasing opportunity to collect large-scale datasets for population genomic analyses, the use of high throughput sequencing to study populations of polyploids has seen little application. This is due in large part to problems associated with determining allele copy number in the genotypes of polyploid individuals (allelic dosage uncertainty--ADU), which complicates the calculation of important quantities such as allele frequencies. This well known problem has hindered population genetic studies in polyploids for decades, though several tools exist for analyzing genetic data from polyploids by dealing with particular issues of ADU. Additional complications arise because of the mixed inheritance patterns and variable reproductive modes that are characteristic of many polyploid taxa, making the development of population genetic models for polyploids especially difficult. Here we describe a statistical model to estimate biallelic SNP frequencies in a population of polyploids using high throughput sequencing data in the form of read counts. Uncertainty in the number of copies of an allele in an individual's genotype is accounted for by treating genotypes as an intermediate parameter in a hierarchical Bayesian model. In this way, we bridge the gap from data collection (using techniques such as restriction-site associated DNA sequencing) to allele frequency estimation in a unified inferential framework by summing over genotype uncertainty. Simulated datasets were generated under various conditions for both tetraploid and hexaploid populations to evaluate the model's performance and to help guide the collection of empirical data. We also discuss potential sources of bias that could influence results, as well as propose model extensions to ameliorate some of these biases.
-\medskip
+\vspace{0.25in}
+
+\noindent \textbf{Keywords}: polyploidy, population genomics, hierarchical Bayesian modeling, allele frequencies
+\vspace{0.25in}
 
 %%%%%%%%%%%%%%%%%%%
 \section*{Introduction}            %%
 %%%%%%%%%%%%%%%%%%%
 
 \textbf{Paragraph 1: The importance of polyploidy}---The process of whole genome duplication (WGD) has come to be acknowledged as an important evolutionary force in the generation of potentially adaptive genetic variation \citep{otto2000polyploidy,soltis2000PNASployploidy,soltisD2003polyploid,soltisd2009diversification,soltisd2010polyploidUnknowns,soltisd2014stebbins,Selmecki2015yeastAdaptation}. Though its effects were initially debated \citep{wagner1970noise,StebbinsVariationEvolution}, a reevaluation of the prevalence and impact of WGD has solidified its influence at evolutionary time scales both deep and shallow \citep{soltisd2004tragopogon,comai2005polyploid,cui2006genomeDuplication,jiao2011ancientWGD,canon2014polyploidyLegumes,douglas2015diploidizationCapsella}. 
+
+Biologists have long been fascinated by the occurrence of whole genome duplication (WGD) in natural populations and have debated its role in the generation of biodiversity \citep{GrantPlantSpeciation,StebbinsVariationEvolution,ClausKeckHies1940}. Though it is now generally regarded as an important of plant diversification (it is hypothesized that close to 15\% of angiosperm and 31\% of fern species are polyploids \citep{wood2009polyploid}), the role of polyploidy in plant evolution was originally considered by some to be a ``dead-end'' \citep{soltisd2014stebbins,wagner1970noise,StebbinsVariationEvolution}. Since its first discovery in the early twentieth century, polyploidy has been continually studied in nearly all areas of botany \citep{winge1917polyploidy,Winkler1916polyploidy,ClausKeckHies1945polyploidy,GrantPlantSpeciation,StebbinsVariationEvolution,soltisD2003polyploid,soltisd2010polyploidUnknowns,soltai2009roleOfHybridization}. However, this phenomenon is not restricted just to plants. Though fewer examples of WGD are currently known for animal systems, groups such as amphibians, fish, and reptiles all exhibit polyploidy \citep{allendorf1984tetraploidFish,gregory2005polyploidyAnimals}. Ancient genome duplications are also thought to have played an important role in the evolution of both plants and animals, occurring in the lineages leading to the seed plants, angiosperms and vertebrates \citep{ohno1970geneDuplication,furlong2001animalOctoploid,jiao2011ancientWGD,otto2000polyploidy}. These paleopolyploidization events during the early history of seed plants and angiosperms have also been followed by several more WGDs in all major plant groups, providing evidence for the importance of this phenomenon to the evolution of plants \citep{scarpino2014polyploid,canon2014polyploidyLegumes,cui2006genomeDuplication}. 
 \medskip
 
 \textbf{Paragraph 2: The history of models for polyploids}---The theoretical treatment of population genetics models in polyploids has it origins in the Modern Synthesis, with  Fisher, Haldane and Wright each contributing to the development of some of the earliest mathematical models for understanding allele frequencies in polyploids \citep{haldane1930autopolyploids,wright1938polyploid,}. Among the earliest of these papers was Haldane's extension of the Hardy-Weinberg theorem to arbitrary ploidy, as well as his treatment of autotetraploid inhertance. Fisher's interest in polyploidy stemmed largely from observations made in the plant genus , which exhibited differing levels of heterostyly. The further observation of mixed ploidy-levels within the populations led Fisher to examine patterns of inheritance of polyploids. Wright's contributions were concerned mostly with the calculation of changes in allele frequencies through mutation, migration and to some degree selection, and can be considered a simple extension of his previous work on allele frequencies to the case of a $2k$-ploid. \cite{moody1993autopolyploids} It was also noted by Moto Kimura in his papers on diffusion processes for allele frequencies that models such as Wright's $\phi$ could potentially be applied to polyploid organisms \citep{kimura1964diffusion}. All of these models depend on the accurate estimation of genotypes, which has been the Achilles' heel of polyploid population genetics. For a more contemporary review on population genetics in polyploids see \cite{dufresne2014polyPopGen} and references within.
@@ -92,7 +98,7 @@ Despite the ever increasing opportunity to collect large-scale datasets for popu
 \textbf{Paragraph 3: Brief overview of model for polyploids and high throughput sequencing}---There are few examples of RADseq experiments (but see \citep{logan-young2015polyploidSNP}).
 \medskip
 
-\textbf{Paragraph 4: Explain what the model here accomplishes}---The model described here aims to tackle problems associated with allelic dosage uncertainty.
+\textbf{Paragraph 4: Explain what the model here accomplishes}---The model described here aims to address problems associated with allelic dosage uncertainty by considering . A
 \medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,7 +114,7 @@ Despite the ever increasing opportunity to collect large-scale datasets for popu
 Here we consider a sample of $N$ individuals from a single population of ploidy-level $\psi\: (\psi\geq2)$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of reads typically generated by high throughput sequencing platforms: \tmat{} and \rmat. The $N\times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N\times L$ matrix containing the number of sampled reads with the chosen reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes the probability distribution for sequencing reads can be factored
 
 \begin{equation}\label{factored_lik}
-P(\bm{R}|\bm{T},\bm{G}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell})
+P(\bm{R}|\bm{T},\bm{G}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell})\,.
 \end{equation}
 
 \noindent For an individual, $i$, at a particular locus, $\ell$, we model the number of sequencing reads containing the reference allele ($r_{i\ell}$) as a Binomial random variable conditional on the total number of sequencing reads ($t_{i\ell} $), the underlying genotype ($g_{i\ell}$) and a constant level of sequencing error ($\epsilon$)
@@ -129,7 +135,7 @@ P(\bm{R}|\bm{T},\bm{G}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^
 The model for genotypes will also be Binomial with parameter
 
 \begin{equation}\label{condl_prior}
-P(\bm{G}|\psi, \bm{p}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(g_{i \ell}|\psi, p_{\ell})
+P(\bm{G}|\psi, \bm{p}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(g_{i \ell}|\psi, p_{\ell})\,.
 \end{equation}
 
 The joint posterior distribution of allele frequencies and genotypes is equal to the product across all loci and all individuals of the likelihood, the conditional prior on genotypes and the prior distribution on allele frequencies up to a constant of proportionality

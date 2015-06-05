@@ -5,45 +5,46 @@ The style file: molEcol.bst
 Database file #1: references.bib
 Warning--I didn't find a database entry for ""
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 28 entries,
+Warning--can't use both author and editor fields in allendorf1984tetraploidFish
+You've used 40 entries,
             3174 wiz_defined-function locations,
-            831 strings with 11146 characters,
-and the built_in function-call counts, 24276 in all, are:
-= -- 2228
-> -- 843
-< -- 14
-+ -- 422
-- -- 234
-* -- 2032
-:= -- 3469
-add.period$ -- 56
-call.type$ -- 28
-change.case$ -- 210
-chr.to.int$ -- 31
-cite$ -- 28
-duplicate$ -- 1853
-empty$ -- 2031
-format.name$ -- 304
-if$ -- 4998
+            904 strings with 13195 characters,
+and the built_in function-call counts, 33297 in all, are:
+= -- 3046
+> -- 1136
+< -- 22
++ -- 566
+- -- 315
+* -- 2759
+:= -- 4779
+add.period$ -- 80
+call.type$ -- 40
+change.case$ -- 291
+chr.to.int$ -- 43
+cite$ -- 41
+duplicate$ -- 2544
+empty$ -- 2812
+format.name$ -- 421
+if$ -- 6864
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 242
-newline$ -- 119
-num.names$ -- 112
-pop$ -- 518
+missing$ -- 335
+newline$ -- 167
+num.names$ -- 160
+pop$ -- 746
 preamble$ -- 1
-purify$ -- 184
+purify$ -- 259
 quote$ -- 0
-skip$ -- 550
+skip$ -- 759
 stack$ -- 0
-substring$ -- 2381
-swap$ -- 594
+substring$ -- 3215
+swap$ -- 799
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 243
-warning$ -- 0
-while$ -- 209
+type$ -- 333
+warning$ -- 1
+while$ -- 283
 width$ -- 0
-write$ -- 340
-(There was 1 warning)
+write$ -- 478
+(There were 2 warnings)
