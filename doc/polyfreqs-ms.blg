@@ -8,7 +8,7 @@ Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--can't use both author and editor fields in allendorf1984tetraploidFish
 You've used 40 entries,
             3174 wiz_defined-function locations,
-            904 strings with 13195 characters,
+            904 strings with 13185 characters,
 and the built_in function-call counts, 33297 in all, are:
 = -- 3046
 > -- 1136
