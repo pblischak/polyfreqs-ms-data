@@ -1,4 +1,4 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \input{babelbst.tex}
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
@@ -56,6 +56,16 @@ Dufresne F, Stift M, Vergilino R, Malbe BK (2014) Recent progress and
   challenges in population genetics of polyploid organisms: an overview of
   current state-of-the-art molecular and statistical tools.
 \newblock \emph{Molecular Ecology}, \textbf{23}, 40--69.
+
+\bibitem[{Fisher(1941)}]{fisher1941lythrum}
+Fisher RA (1941) The theoretical consequences of polyploid inheritance for the
+  mid style form of \textit{{Lytrum} salicaria}.
+\newblock \emph{Annals of Eugenics}, \textbf{11}, 31--38.
+
+\bibitem[{Fisher(1943)}]{fisher1943doublereduction}
+Fisher RA (1943) Allowance for double reduction in the calculation of genotype
+  frequencies with polysomic inheritance.
+\newblock \emph{Annals of Eugenics}, \textbf{12}, 169--171.
 
 \bibitem[{Furlong \& Holland(2001)}]{furlong2001animalOctoploid}
 Furlong RF, Holland PWH (2001) Were vertebrates octoploid?
@@ -150,8 +160,8 @@ Soltis DE, Buggs RJA, Doyle JJ, Soltis PS (2010) What we still don't know about
 \bibitem[{Soltis \emph{\bbletal{}}(2004)Soltis, Soltis, Pires, Kovarik, Tate,
   \& Mavrodiev}]{soltisd2004tragopogon}
 Soltis DE, Soltis PS, Pires JC, Kovarik A, Tate JA, Mavrodiev E (2004) Recent
-  and recurrent polyploidy in tragopogon (asteraceae): cytogenetic, genomic and
-  genetic comparisons.
+  and recurrent polyploidy in \textit{{Tragopogon}} ({Asteraceae}):
+  cytogenetic, genomic and genetic comparisons.
 \newblock \emph{Biological Journal of the Linnean Society}, \textbf{82},
   485--501.
 

@@ -3,48 +3,47 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: polyfreqs-ms.aux
 The style file: molEcol.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for ""
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Warning--can't use both author and editor fields in allendorf1984tetraploidFish
-You've used 40 entries,
+You've used 42 entries,
             3174 wiz_defined-function locations,
-            904 strings with 13185 characters,
-and the built_in function-call counts, 33297 in all, are:
-= -- 3046
-> -- 1136
-< -- 22
-+ -- 566
-- -- 315
-* -- 2759
-:= -- 4779
-add.period$ -- 80
-call.type$ -- 40
-change.case$ -- 291
-chr.to.int$ -- 43
-cite$ -- 41
-duplicate$ -- 2544
-empty$ -- 2812
-format.name$ -- 421
-if$ -- 6864
+            915 strings with 13500 characters,
+and the built_in function-call counts, 34421 in all, are:
+= -- 3150
+> -- 1156
+< -- 24
++ -- 576
+- -- 321
+* -- 2839
+:= -- 4955
+add.period$ -- 84
+call.type$ -- 42
+change.case$ -- 303
+chr.to.int$ -- 45
+cite$ -- 43
+duplicate$ -- 2634
+empty$ -- 2914
+format.name$ -- 429
+if$ -- 7090
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 335
-newline$ -- 167
-num.names$ -- 160
-pop$ -- 746
+missing$ -- 349
+newline$ -- 175
+num.names$ -- 168
+pop$ -- 766
 preamble$ -- 1
-purify$ -- 259
+purify$ -- 269
 quote$ -- 0
-skip$ -- 759
+skip$ -- 785
 stack$ -- 0
-substring$ -- 3215
-swap$ -- 799
+substring$ -- 3319
+swap$ -- 833
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 333
+type$ -- 351
 warning$ -- 1
-while$ -- 283
+while$ -- 295
 width$ -- 0
-write$ -- 478
-(There were 2 warnings)
+write$ -- 502
+(There was 1 warning)
