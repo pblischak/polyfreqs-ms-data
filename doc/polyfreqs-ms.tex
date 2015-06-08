@@ -46,7 +46,7 @@
 {\Large \bfseries Estimating allele frequencies in non-model polyploids using high throughput sequencing data}
 \vspace{0.45in}
 
-Paul D. Blischak,$^{1,\dagger}$ Laura S. Kubatko$^{1,2}$ and Andrea D. Wolfe$^1$
+Paul D. Blischak$^{1,\dagger}$, Laura S. Kubatko$^{1,2}$ and Andrea D. Wolfe$^1$
 \vspace{0.45in}
 
 
@@ -71,7 +71,7 @@ Paul D. Blischak,$^{1,\dagger}$ Laura S. Kubatko$^{1,2}$ and Andrea D. Wolfe$^1$
 
 \noindent \textbf{Running title}: Allele frequencies in polyploids
 
-\vspace{.25in}
+\vspace{.45in}
 
 %%%%%%%%%%%%%%%%%%%%
 \section*{Abstract}                      %%
@@ -87,12 +87,10 @@ Despite the ever increasing opportunity to collect large-scale datasets for popu
 \section*{Introduction}            %%
 %%%%%%%%%%%%%%%%%%%
 
-\textbf{Paragraph 1: The importance of polyploidy}---The process of whole genome duplication (WGD) has come to be acknowledged as an important evolutionary force in the generation of potentially adaptive genetic variation \citep{otto2000polyploidy,soltis2000PNASployploidy,soltisD2003polyploid,soltisd2009diversification,soltisd2010polyploidUnknowns,soltisd2014stebbins,Selmecki2015yeastAdaptation}. Though its effects were initially debated \citep{wagner1970noise,StebbinsVariationEvolution}, a reevaluation of the prevalence and impact of WGD has solidified its influence at evolutionary time scales both deep and shallow \citep{soltisd2004tragopogon,comai2005polyploid,cui2006genomeDuplication,jiao2011ancientWGD,canon2014polyploidyLegumes,douglas2015diploidizationCapsella}. 
-
-Biologists have long been fascinated by the occurrence of whole genome duplication (WGD) in natural populations and have recognized its role in the generation of biodiversity \citep{GrantPlantSpeciation,StebbinsVariationEvolution,ClausKeckHies1940}. It is particularly common in plants, and is now generally regarded as an important of plant diversification (it is hypothesized that close to 15\% of angiosperm and 31\% of fern species are polyploids \citep{wood2009polyploid}), the role of polyploidy in plant evolution was originally considered by some to be a ``dead-end'' \citep{soltisd2014stebbins,wagner1970noise,StebbinsVariationEvolution}. Since its first discovery in the early twentieth century, polyploidy has been continually studied in nearly all areas of botany \citep{winge1917polyploidy,Winkler1916polyploidy,ClausKeckHies1945polyploidy,GrantPlantSpeciation,StebbinsVariationEvolution,soltisD2003polyploid,soltisd2010polyploidUnknowns,soltai2009roleOfHybridization}. However, this phenomenon is not restricted just to plants. Though fewer examples of WGD are currently known for animal systems, groups such as amphibians, fish, and reptiles all exhibit polyploidy \citep{allendorf1984tetraploidFish,gregory2005polyploidyAnimals}. Ancient genome duplications are also thought to have played an important role in the evolution of both plants and animals, occurring in the lineages leading to the seed plants, angiosperms and vertebrates \citep{ohno1970geneDuplication,furlong2001animalOctoploid,jiao2011ancientWGD,otto2000polyploidy}. These paleopolyploidization events during the early history of seed plants and angiosperms have also been followed by several more WGDs in all major plant groups, providing evidence for the importance of this phenomenon to the evolution of plants \citep{scarpino2014polyploid,canon2014polyploidyLegumes,cui2006genomeDuplication}. 
+Biologists have long been fascinated by the occurrence of whole genome duplication (WGD) in natural populations and have recognized its role in the generation of biodiversity \citep{ClausKeckHies1940,StebbinsVariationEvolution,GrantPlantSpeciation,otto2000polyploidy}. Though WGD is thought to have occurred at some point in nearly every branch of the tree of life, it is a particularly common phenomenon in plants and is now generally regarded as an important factor in plant diversification (it is hypothesized that close to 15\% of angiosperm and 31\% of fern species are polyploids) \citep{wood2009polyploid,soltisd2009diversification,scarpino2014polyploid}. The role of polyploidy in plant evolution was originally considered by some to be a ``dead-end'' \citep{StebbinsVariationEvolution,wagner1970noise,soltisd2014stebbins} but, since its first discovery in the early twentieth century, polyploidy has been continually studied in nearly all areas of botany \citep{winge1917polyploidy,Winkler1916polyploidy,ClausKeckHies1945polyploidy,GrantPlantSpeciation,StebbinsVariationEvolution,soltisD2003polyploid,soltisd2010polyploidUnknowns,soltai2009roleOfHybridization,ramsey2014polEcoProcRoySoc}. However, this phenomenon is not restricted just to plants. Though fewer examples of WGD are currently known for animal systems, groups such as amphibians, fish, and reptiles all exhibit polyploidy \citep{allendorf1984tetraploidFish,gregory2005polyploidyAnimals}. Ancient genome duplications are also thought to have played an important role in the evolution of both plants and animals, occurring in the lineages leading to the seed plants, angiosperms and vertebrates \citep{ohno1970geneDuplication,otto2000polyploidy,furlong2001animalOctoploid,jiao2011ancientWGD}. These paleopolyploidization events during the early history of seed plants and angiosperms have also been followed by several more WGDs in all major plant groups \citep{cui2006genomeDuplication,scarpino2014polyploid,canon2014polyploidyLegumes}. Recent experimental evidence has also demonstrated an increased proclivity for survivorship and adaptation to foreign environments of polyploid taxa when compared with their lower ploidy relatives \citep{ramsey2011polyploidEcology,Selmecki2015yeastAdaptation}.
 \medskip
 
-\textbf{Paragraph 2: The history of models for polyploids}---The theoretical treatment of population genetics models in polyploids has it origins in the Modern Synthesis, with  Fisher, Haldane and Wright each contributing to the development of some of the earliest mathematical models for understanding allele frequencies in polyploids \citep{haldane1930autopolyploids,wright1938polyploid,fisher1941lythrum,fisher1943doublereduction}. Among the earliest of these papers was Haldane's extension of the Hardy-Weinberg theorem to arbitrary ploidy, as well as his treatment of autotetraploid inhertance. Fisher's interest in polyploidy stemmed largely from observations made in the plant genus \textit{lythrum}, which exhibited differing levels of heterostyly. The further observation of mixed ploidy-levels within the populations led Fisher to examine patterns of inheritance of polyploids. Wright's contributions were concerned mostly with the calculation of changes in allele frequencies through mutation, migration and to some degree selection, and can be considered a simple extension of his previous work on allele frequencies to the case of a $2k$-ploid. \cite{moody1993autopolyploids} It was also noted by Moto Kimura in his papers on diffusion processes for allele frequencies that models such as Wright's $\phi$ could potentially be applied to polyploid organisms \citep{kimura1964diffusion}. All of these models depend on the accurate estimation of genotypes, which has been the Achilles' heel of polyploid population genetics. For a more contemporary review on population genetics in polyploids see \cite{dufresne2014polyPopGen} and references within.
+\textbf{Paragraph 2: The history of models for polyploids}---The theoretical treatment of population genetic models in polyploids has it origins in the Modern Synthesis with  Fisher, Haldane and Wright each contributing to the development of some of the earliest mathematical models for understanding evolutionary processes in polyploids \citep{haldane1930autopolyploids,wright1938polyploid,fisher1941lythrum,fisher1943doublereduction}. Among the earliest of these papers was Haldane's extension of the Hardy-Weinberg theorem to arbitrary ploidy, as well as his treatment of autotetraploid inhertance. Fisher's interest in polyploidy stemmed largely from observations made in the plant genus \textit{Lythrum}, which exhibited conspicuous patterns of heterostyly. The further observation of mixed ploidy levels within the populations led Fisher to examine patterns of inheritance of polyploids. Wright's contributions were concerned mostly with the calculation of changes in allele frequencies through mutation, migration and to some degree selection, and can be considered a simple extension of his previous work on allele frequencies to the case of a $2k$-ploid. \cite{moody1993autopolyploids} It was also noted by Moto Kimura in his papers on diffusion processes for allele frequencies that models such as Wright's $\phi$ could potentially be applied to polyploid organisms \citep{kimura1964diffusion}. All of these models depend on the accurate estimation of genotypes, which has been the Achilles' heel of polyploid population genetics. For a more contemporary review on population genetics in polyploids see \cite{dufresne2014polyPopGen} and references within.
 \medskip
 
 \textbf{Paragraph 3: Brief overview of model for polyploids and high throughput sequencing}---There are few examples of RADseq experiments (but see \citep{logan-young2015polyploidSNP}).
@@ -111,7 +109,7 @@ Biologists have long been fascinated by the occurrence of whole genome duplicati
 \subsection*{Model setup}
 \medskip
 
-Here we consider a sample of $N$ individuals from a single population of ploidy-level $\psi\: (\psi\geq2)$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of reads typically generated by high throughput sequencing platforms: \tmat{} and \rmat. The $N\times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N\times L$ matrix containing the number of sampled reads with the chosen reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes the probability distribution for sequencing reads can be factored
+Here we consider a sample of $N$ individuals from a single population of ploidy level $\psi\: (\psi\geq2)$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of reads typically generated by high throughput sequencing platforms: \tmat{} and \rmat. The $N\times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N\times L$ matrix containing the number of sampled reads with the chosen reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes the probability distribution for sequencing reads can be factored as
 
 \begin{equation}\label{factored_lik}
 P(\bm{R}|\bm{T},\bm{G}, \epsilon) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell}, \epsilon)\,.
@@ -168,18 +166,18 @@ P(\,p_{\ell}|g_{i \ell},r_{i \ell},\epsilon) = \text{Beta}\left(\alpha= \sum_{i=
 The full conditional distribution for genotypes is split into $\psi+1$ cases (similar to the conditional prior), making it a discrete categorical distribution over the possible values for the genotypes $(0,\ldots,\psi)$. Using $k$ as a generic index, the distribution for individual $i$ at locus $\ell$ is
 
 \begin{equation}\label{G-full}
-P(g_{i \ell}|g_{(\text{-}i) \ell},p,r_{i \ell},\epsilon) = \frac{1}{\mathcal{C}} \;
+P(g_{i \ell}|g_{(\text{-}i) \ell},p_{\ell},r_{i \ell},\epsilon) = \frac{1}{\mathcal{C}_{i \ell}} \;
 	\begin{cases}
-	\epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p)^\psi & \text{for  } k = 0, \\[0.05in]
-	\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\displaystyle\binom{\psi}{k}p^{k}\,(1-p)^{\psi-k} & \text{for  } k = 1,\ldots,\psi-1, \\[0.05in]
-	(1-\epsilon)^{r_{i \ell}}\epsilon^{t_{i \ell}-r_{i \ell}}p^\psi & \text{for  } k = \psi\,,
+	\epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p_{\ell})^\psi & \text{for  } k = 0, \\[0.05in]
+	\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\displaystyle\binom{\psi}{k}p_{\ell}^{k}\,(1-p_{\ell})^{\psi-k} & \text{for  } k = 1,\ldots,\psi-1, \\[0.05in]
+	(1-\epsilon)^{r_{i \ell}}\epsilon^{t_{i \ell}-r_{i \ell}}p_{\ell}^\psi & \text{for  } k = \psi\,,
 	\end{cases} 
 \end{equation}
 
-\noindent where $g_{(\text{-}i) \ell}$ is the value of the genotypes for all sampled individuals excluding individual $i$ and $\mathcal{C}$ is a normalizing constant equal to the sum of all of the terms:
+\noindent where $g_{(\text{-}i) \ell}$ is the value of the genotypes for all sampled individuals excluding individual $i$ and $\mathcal{C}_{i \ell}$ is a normalizing constant equal to the sum of all of the terms:
 
 \begin{equation*}
-\mathcal{C} = \epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p)^\psi + (1-\epsilon)^{r_{i \ell}}\epsilon^{t_{i \ell}-r_{i \ell}}p^\psi + \sum_{k=1}^{\psi-1}\left(\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\binom{\psi}{k}\,p^k(1-p)^{\psi-k}\right).
+\mathcal{C}_{i \ell} = \epsilon^{r_{i \ell}}(1-\epsilon)^{t_{i \ell}-r_{i \ell}}(1-p_{\ell})^\psi + (1-\epsilon)^{r_{i \ell}}\epsilon^{t_{i \ell}-r_{i \ell}}p_{\ell}^\psi + \sum_{k=1}^{\psi-1}\left(\left(\frac{k}{\psi}\right)^{r_{i \ell}}\left(1-\frac{k}{\psi}\right)^{t_{i \ell}-r_{i \ell}}\binom{\psi}{k}\,p_{\ell}^k(1-p_{\ell})^{\psi-k}\right).
 \end{equation*}
 
 \medskip
@@ -261,7 +259,7 @@ Conceived of the study: PDB, LSK and ADW. PDB derived the polyploid model, ran t
 %%%%%%%%%%%%%%%%%%%%%%
 
 R and bash scripts for simulating the datasets, analyzing them using Gibbs sampling and producing the figures from the resulting output can be all be found on GitHub (\url{https://github.com/pblischak/polyfreqs-ms-data}). We also provide an implementation of the Gibbs sampler for estimating allele frequencies in the R package \textsc{polyfreqs} (\url{https://github.com/pblischak/polyfreqs}). See the package wiki for more details (\url{https://github.com/pblischak/polyfreqs/wiki}).
-\vspace{0.5in}
+\vfill
 
 %%%%%%%%%%%%%%%%%
 % References                       %%
@@ -292,7 +290,7 @@ $L$ & The number of loci. \\
 $\ell$ & Index for loci ($\ell\; \in \{1,\ldots,L\}$). \\
 $N$ & Total number of individuals sequenced. \\
 $i$ & Index for individuals ($i\; \in \{1,\ldots,N\}$). \\
-$\psi$ & The ploidy-level of individuals in the population (e.g., tetraploid: $\psi$=4). \\
+$\psi$ & The ploidy level of individuals in the population (e.g., tetraploid: $\psi$=4). \\
 $p_{\ell}$ & Frequency of the reference allele at locus $\ell$. [$\bm{p}$] \\
 $g_{i \ell}$ & The number of copies of the reference allele for individual $i$ at locus $\ell$. [$\bm{G}$] \\
 $t_{i \ell}$ & The total number of reads for individual $i$ at locus $\ell$. [$\bm{T}$] \\

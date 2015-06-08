@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{40}
 \providecommand{\natexlab}[1]{#1}
 \input{babelbst.tex}
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
@@ -33,22 +33,11 @@ Clausen J, Keck DD, Hiesey WM (1945) \emph{Experimental studies on the nature
   examples from {Madiinae}.}
 \newblock Carnegie Inst. Washington Publ.
 
-\bibitem[{Comai(2005)}]{comai2005polyploid}
-Comai L (2005) The advantages and disadvantages of being polyploid.
-\newblock \emph{Nature Reviews. Genetics}, \textbf{6}, 836--846.
-
 \bibitem[{Cui \emph{\bbletal{}}(2006)Cui, Wall, Leebens-Mack
   \emph{\bbletal{}}}]{cui2006genomeDuplication}
 Cui L, Wall PK, Leebens-Mack JH, \emph{\bbletal{}} (2006) Widespread genome
   duplications throughout the history of flowering plants.
 \newblock \emph{Genome Research}, \textbf{16}, 738--749.
-
-\bibitem[{Douglas \emph{\bbletal{}}(2015)Douglas, Gos, Steige
-  \emph{\bbletal{}}}]{douglas2015diploidizationCapsella}
-Douglas G, Gos G, Steige K, \emph{\bbletal{}} (2015) Hybrid origins and the
-  earliest stages of diploidization in the highly successful recent polyploid
-  \textit{{Capsella} bursa-pastoris}.
-\newblock \emph{bioRxiv}, \textbf{doi}, http://dx.doi.org/10.1101/006783.
 
 \bibitem[{Dufresne \emph{\bbletal{}}(2014)Dufresne, Stift, Vergilino, \&
   Malbe}]{dufresne2014polyPopGen}
@@ -133,6 +122,17 @@ Plummer M, Best N, Cowles K, Vines K (2006) {CODA}: {Convergence} {Diagnostics}
   computing}.
 \newblock R Foundation for Statistical Computing, Vienna, Austria.
 
+\bibitem[{Ramsey(2011)}]{ramsey2011polyploidEcology}
+Ramsey J (2011) Polyploidy and ecological adaptation in wild yarrow.
+\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{108},
+  7096--7101.
+
+\bibitem[{Ramsey \& Ramsey(2014)}]{ramsey2014polEcoProcRoySoc}
+Ramsey J, Ramsey TS (2014) Ecological studies of polyploidy in the 100 years
+  following its discovery.
+\newblock \emph{Philosophical Transactions of the Royal Society B: Biological
+  Sciences}, \textbf{369}, 20130352.
+
 \bibitem[{Scarpino \emph{\bbletal{}}(2014)Scarpino, Levin, \&
   Meyers}]{scarpino2014polyploid}
 Scarpino SV, Levin DA, Meyers LA (2014) Polyploid formation shapes flowering
@@ -157,14 +157,6 @@ Soltis DE, Buggs RJA, Doyle JJ, Soltis PS (2010) What we still don't know about
   polyploidy.
 \newblock \emph{Taxon}, \textbf{59}, 1387--1403.
 
-\bibitem[{Soltis \emph{\bbletal{}}(2004)Soltis, Soltis, Pires, Kovarik, Tate,
-  \& Mavrodiev}]{soltisd2004tragopogon}
-Soltis DE, Soltis PS, Pires JC, Kovarik A, Tate JA, Mavrodiev E (2004) Recent
-  and recurrent polyploidy in \textit{{Tragopogon}} ({Asteraceae}):
-  cytogenetic, genomic and genetic comparisons.
-\newblock \emph{Biological Journal of the Linnean Society}, \textbf{82},
-  485--501.
-
 \bibitem[{Soltis \emph{\bbletal{}}(2003)Soltis, Soltis, \&
   Tate}]{soltisD2003polyploid}
 Soltis DE, Soltis PS, Tate JA (2003) Advances in the study of polyploidy since
@@ -176,12 +168,6 @@ Soltis DE, Soltis PS, Tate JA (2003) Advances in the study of polyploidy since
 Soltis DE, Visger CJ, Soltis PS (2014) The polyploidy revolution then...and
   now: Stebbins revisited.
 \newblock \emph{American Journal of Botany}, \textbf{101}, 1057--1078.
-
-\bibitem[{Soltis \& Soltis(2000)}]{soltis2000PNASployploidy}
-Soltis PS, Soltis DE (2000) The role of genetic and genomic attributes in the
-  success of polyploids.
-\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{97},
-  7051--7057.
 
 \bibitem[{Soltis \& Soltis(2009)}]{soltai2009roleOfHybridization}
 Soltis PS, Soltis DE (2009) The role of hybridization in plant speciation.
