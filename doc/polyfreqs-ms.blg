@@ -8,23 +8,23 @@ Warning--can't use both author and editor fields in allendorf1984tetraploidFish
 You've used 40 entries,
             3174 wiz_defined-function locations,
             903 strings with 12717 characters,
-and the built_in function-call counts, 31780 in all, are:
-= -- 2906
+and the built_in function-call counts, 31816 in all, are:
+= -- 2910
 > -- 1047
 < -- 24
 + -- 516
 - -- 291
-* -- 2600
-:= -- 4601
+* -- 2604
+:= -- 4605
 add.period$ -- 80
 call.type$ -- 40
 change.case$ -- 284
 chr.to.int$ -- 43
 cite$ -- 41
-duplicate$ -- 2454
-empty$ -- 2700
+duplicate$ -- 2458
+empty$ -- 2704
 format.name$ -- 393
-if$ -- 6541
+if$ -- 6549
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 327
@@ -36,7 +36,7 @@ purify$ -- 252
 quote$ -- 0
 skip$ -- 730
 stack$ -- 0
-substring$ -- 3003
+substring$ -- 3011
 swap$ -- 778
 text.length$ -- 0
 text.prefix$ -- 0
