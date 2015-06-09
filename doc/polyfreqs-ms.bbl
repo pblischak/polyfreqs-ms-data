@@ -1,4 +1,4 @@
-\begin{thebibliography}{40}
+\begin{thebibliography}{54}
 \providecommand{\natexlab}[1]{#1}
 \input{babelbst.tex}
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
@@ -8,6 +8,27 @@
 Allendorf FW, Thorgaard GH (1984) \emph{Tetraploidy and the evolution of
   salmonid fishes. In: Evolutionary genetics of fishes}.
 \newblock Edited by B. J. Turner. Plenum Press, pp. 1--53.
+
+\bibitem[{Arnold \emph{\bbletal{}}(2012)Arnold, Bomblies, \&
+  Wakeley}]{arnold2012autotetraploidCoal}
+Arnold B, Bomblies K, Wakeley J (2012) Extending coalescent theory to
+  autotetraploids.
+\newblock \emph{Genetics}, \textbf{192}, 195--204.
+
+\bibitem[{Baird \emph{\bbletal{}}(2008)Baird, Etter, Atwood
+  \emph{\bbletal{}}}]{baird2008radTags}
+Baird NA, Etter PD, Atwood TS, \emph{\bbletal{}} (2008) Rapid {SNP} discovery
+  and genetic mapping using sequenced {RAD} markers.
+\newblock \emph{PloS ONE}, \textbf{3}, e3376.
+
+\bibitem[{Barlow(1913)}]{barlow1913heterostylism}
+Barlow N (1913) Preliminary note on heterostylism in \textit{{Oxalis}} and
+  \textit{{Lythrum}}.
+\newblock \emph{Journal of Genetics}, \textbf{3}, 53--65.
+
+\bibitem[{Barlow(1923)}]{barlow1923trimorphic}
+Barlow N (1923) Inheritance of the three forms in trimorphic plants.
+\newblock \emph{Journal of Genetics}, \textbf{13}, 133--146.
 
 \bibitem[{Buerkle \& Gompert(2013)}]{buerkle2013popModels}
 Buerkle CA, Gompert Z (2013) Population genomics based on low coverage
@@ -46,15 +67,24 @@ Dufresne F, Stift M, Vergilino R, Malbe BK (2014) Recent progress and
   current state-of-the-art molecular and statistical tools.
 \newblock \emph{Molecular Ecology}, \textbf{23}, 40--69.
 
+\bibitem[{East(1927)}]{east1927lythrum}
+East EM (1927) The inheritance of heterostyly in \textit{{Lythrum} salicaria}.
+\newblock \emph{Genetics}, \textbf{12}, 393--414.
+
 \bibitem[{Fisher(1941)}]{fisher1941lythrum}
 Fisher RA (1941) The theoretical consequences of polyploid inheritance for the
-  mid style form of \textit{{Lytrum} salicaria}.
+  {Mid} style form of \textit{{Lytrum} salicaria}.
 \newblock \emph{Annals of Eugenics}, \textbf{11}, 31--38.
 
 \bibitem[{Fisher(1943)}]{fisher1943doublereduction}
 Fisher RA (1943) Allowance for double reduction in the calculation of genotype
   frequencies with polysomic inheritance.
 \newblock \emph{Annals of Eugenics}, \textbf{12}, 169--171.
+
+\bibitem[{Fisher \& Mather(1943)}]{fisher1943mather}
+Fisher RA, Mather K (1943) The inheritance of style length in \textit{{Lythrum}
+  salicaria}.
+\newblock \emph{Annals of Eugenics}, \textbf{12}, 1--23.
 
 \bibitem[{Furlong \& Holland(2001)}]{furlong2001animalOctoploid}
 Furlong RF, Holland PWH (2001) Were vertebrates octoploid?
@@ -65,7 +95,7 @@ Furlong RF, Holland PWH (2001) Were vertebrates octoploid?
   \& Rubin}]{gelman2014bayesian}
 Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB (2014)
   \emph{Bayesian data analysis}.
-\newblock Chapman \& Hall/CRC Press, \bblthirdo{} \bbledn{}.
+\newblock Chapman \& Hall/CRC Press, 3rd edn.
 
 \bibitem[{Grant(1971)}]{GrantPlantSpeciation}
 Grant V (1971) \emph{Plant speciation}.
@@ -86,9 +116,19 @@ Jiao Y, Wickett NJ, Ayyampalayam S, \emph{\bbletal{}} (2011) Ancestral
   polyploidy in seed plants and angiosperms.
 \newblock \emph{Nature}, \textbf{473}, 97--100.
 
+\bibitem[{Jones \emph{\bbletal{}}(2013)Jones, Sagitov, \&
+  Oxelman}]{jones2013allopolyploid}
+Jones G, Sagitov S, Oxelman B (2013) Statistical inference of allopolyploid
+  species networks in the presence of incomplete lineage sorting.
+\newblock \emph{Systematic Biology}, \textbf{62}, 467--478.
+
 \bibitem[{Kimura(1964)}]{kimura1964diffusion}
 Kimura M (1964) Diffusion models in population genetics.
 \newblock \emph{Journal of Applied Probability}, \textbf{1}, 177--232.
+
+\bibitem[{Lawrence(1929)}]{lawrence1929dahlia}
+Lawrence WJC (1929) The genetics and cytology of \textit{{Dahlia}} species.
+\newblock \emph{Journal of Genetics}, \textbf{21}, 125--158.
 
 \bibitem[{Logan-Young \emph{\bbletal{}}(2015)Logan-Young, Yu, Verma, Percy, \&
   Pepper}]{logan-young2015polyploidSNP}
@@ -103,6 +143,16 @@ Moody ML, Mueller LD, Soltis DE (1993) Genetic variation and random drift in
   autotetraploid populations.
 \newblock \emph{Genetics}, \textbf{134}, 649--657.
 
+\bibitem[{Muller(1914)}]{muller1914primula}
+Muller HJ (1914) A new mode of segregation in gregory's tetraploid primulas.
+\newblock \emph{American Naturalist}, \textbf{48}, 508--512.
+
+\bibitem[{Ogden \emph{\bbletal{}}(2013)Ogden, Gharbi, Mugue
+  \emph{\bbletal{}}}]{ogden2013sturgeonRADseq}
+Ogden R, Gharbi K, Mugue N, \emph{\bbletal{}} (2013) Sturgeon conservation
+  genomics: {SNP} discovery and validation using {RAD} sequencing.
+\newblock \emph{Molecular Ecology}, \textbf{22}, 3112--3123.
+
 \bibitem[{Ohno(1970)}]{ohno1970geneDuplication}
 Ohno S (1970) \emph{Evolution by gene duplication}.
 \newblock Springer.
@@ -116,6 +166,12 @@ Otto SP, Whitton J (2000) Polyploid incidence and evolution.
 Plummer M, Best N, Cowles K, Vines K (2006) {CODA}: {Convergence} {Diagnostics}
   and {Output} {Analysis} for {MCMC}.
 \newblock \emph{R News}, \textbf{6}, 7--11.
+
+\bibitem[{Puritz \emph{\bbletal{}}(2014)Puritz, Matz, Toonen, Weber, Bolnick,
+  \& Bird}]{puritz2014demystifyingRAD}
+Puritz JB, Matz MV, Toonen RJ, Weber JN, Bolnick DI, Bird CE (2014)
+  Demystifying the {RAD} fad.
+\newblock \emph{Molecular Ecology}, \textbf{23}, 5937--5942.
 
 \bibitem[{{R Core Team}(2014)}]{r2014}
 {R Core Team} (2014) \emph{R: a language and environment for statistical
@@ -181,6 +237,12 @@ Stebbins GL (1950) \emph{Variation and evolution in plants}.
 Wagner WH (1970) Biosystematics and evolutionary noise.
 \newblock \emph{Taxon}, \textbf{19}, 146--151.
 
+\bibitem[{Wang \emph{\bbletal{}}(2013)Wang, Thomson, Bodles
+  \emph{\bbletal{}}}]{wang2013birchRADseq}
+Wang N, Thomson M, Bodles WJA, \emph{\bbletal{}} (2013) Genome sequence of
+  dwarf birch (\textit{{Betula} nana}) and cross-species {RAD} markers.
+\newblock \emph{Molecular Ecology}, \textbf{22}, 3098--3111.
+
 \bibitem[{Wickham(2007)}]{wickham2007reshape}
 Wickham H (2007) Reshaping data with the {reshape} package.
 \newblock \emph{Journal of Statistical Software}, \textbf{21}, 1--20.
@@ -208,6 +270,15 @@ Wood TE, Takebayashi N, Barker MS, Mayrose I, Greenspoon PB, Rieseberg LH
   (2009) The frequency of polyploid speciation in vascular plants.
 \newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{106},
   13875--13879.
+
+\bibitem[{Wright(1931)}]{wright1931mendelianPops}
+Wright S (1931) Evolution in {Mendelian} populations.
+\newblock \emph{Genetics}, \textbf{16}, 97--159.
+
+\bibitem[{Wright(1937)}]{wright1937geneFreqs}
+Wright S (1937) The distribution of gene frequencies in populations.
+\newblock \emph{Proceedings of the National Academy of Sciences}, \textbf{23},
+  307--320.
 
 \bibitem[{Wright(1938)}]{wright1938polyploid}
 Wright S (1938) The distribution of gene frequencies in populations of
