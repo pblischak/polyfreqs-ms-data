@@ -1,4 +1,4 @@
-\begin{thebibliography}{54}
+\begin{thebibliography}{55}
 \providecommand{\natexlab}[1]{#1}
 \input{babelbst.tex}
 \newcommand{\Capitalize}[1]{\uppercase{#1}}
@@ -136,6 +136,13 @@ Logan-Young CJ, Yu JZ, Verma SK, Percy RG, Pepper AE (2015) {SNP} discovery in
   complex allotetraploid genomes (\textit{{Gossypium}} spp., {Malvaceae}) using
   genotyping by sequencing.
 \newblock \emph{Applications in Plant Sciences}, \textbf{3}, 1400077.
+
+\bibitem[{Miller \emph{\bbletal{}}(2007)Miller, Dunham, Amores, Cresko, \&
+  Johnson}]{miller2007gbs}
+Miller MR, Dunham JP, Amores A, Cresko WA, Johnson EA (2007) Rapid and
+  cost-effective polymorphism identification and genotyping using restriction
+  site associated dna ({RAD}) markers.
+\newblock \emph{Genome Research}, \textbf{17}, 240--248.
 
 \bibitem[{Moody \emph{\bbletal{}}(1993)Moody, Mueller, \&
   Soltis}]{moody1993autopolyploids}
