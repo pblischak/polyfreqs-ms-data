@@ -106,9 +106,9 @@ The foundation laid down by these early papers has led to the continuing develop
 \textbf{Paragraph 4: Explain what the model here accomplishes}---The model described here aims to address the problems associated with ADU by treating genotypes as a latent variable in a hierarchical Bayesian model. 
 \medskip
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Materials and methods}                  %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%
 
 \noindent Our aim is to estimate the frequency of a reference allele for each locus sampled from a population of known ploidy ($\psi$), where the reference allele can be chosen arbitrarily between the two alleles at a given biallelic SNP. To do this we extend the population genomic models of \cite{buerkle2013popModels}, which employ a Bayesian framework to model high throughput sequencing reads ($\bm{T},\bm{R}$), genotypes ($\bm{G}$) and allele frequencies ($\bm{p}$), to the case of arbitrary ploidy. The idea behind the model is to view the sequencing reads gathered for an individual as a random sample from the unobserved genotypes at each locus. Genotypes can then be treated as a parameter in a probability model that governs how likely it is that we see a particular number of sequencing reads carrying the reference allele. Similarly, we can treat genotypes as a random sample from the underlying allele frequency in the population (assuming Hardy-Weinberg equilibrium). This hierarchical setup addresses the problems associated with ADU by treating genotypes as a latent variable that can be integrated out using Markov chain Monte Carlo (MCMC).
 \medskip
@@ -205,9 +205,9 @@ Simulations were performed to assess error rates in allele frequency estimation 
 All simulations were performed using the R statistical package \citep{r2014} on the Oakley cluster at the Ohio Supercomputer Center (\url{https://osc.edu}). Figures were generated using the R packages \textsc{ggplot2} \citep{wickham2009ggplot2}, \textsc{reshape} \citep{wickham2011plyr} and \textsc{plyr} \citep{wickham2007reshape} with additional figure manipulation completed using Inkscape (\url{https://inkscape.org}). MCMC diagnostics were done using the \textsc{coda} package \citep{plummer2006coda}.
 \medskip
 
-%%%%%%%%%%%%%%%%%
-\section*{Results}               %%
-%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%
+\section*{Results}             %%
+%%%%%%%%%%%%%%%
 
 Varying the level of coverage and the number of individuals (Figure \#).
 \medskip
@@ -215,9 +215,9 @@ Varying the level of coverage and the number of individuals (Figure \#).
 It is important to note that we are generating data under the model in the first place, which . However, the high levels of accuracy reported by some of the simulation conditions should not be interpreted as our being selective of settings that show that the model works well, but as validation that the model works when it is supposed to. Analyses of empirical data will obviously not have known values against which the estimated allele frequencies can be compared, but data collection can be informed by these simulations to optimize the number of individuals sequenced per population and the average coverage per locus per individual to obtain good results based on financial resources. Assessments of model adequacy would be also be straightforward to employ to 
 \medskip
 
-%%%%%%%%%%%%%%%%%%%
-\section*{Discussion}               %%
-%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+\section*{Discussion}              %%
+%%%%%%%%%%%%%%%%%
 
 Talk about general discussion points here and maybe include stuff about sources of bias here rather than dedicating an entire section to it.
 
