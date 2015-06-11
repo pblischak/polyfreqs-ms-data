@@ -5,16 +5,11 @@
 \usepackage[T1]{fontenc}
 \DisableLigatures[f]{encoding=T1}
 \usepackage[skip=2pt]{caption}
-\usepackage{subcaption}
 \usepackage{hyperref,lineno}
 \linenumbers
 \usepackage{textcomp}
 \usepackage{setspace,array,float}
-\usepackage{bm}
-\usepackage{rotating}
-\usepackage{hhline}
-\usepackage{color}
-\usepackage{delarray}
+\usepackage{bm,upgreek}
 \usepackage[compact]{titlesec}
 \usepackage[none]{hyphenat}
 \setlength{\parskip}{0cm}
@@ -24,7 +19,7 @@
 \usepackage{datetime}
 \pagestyle{plain}
 \frenchspacing
-\doublespacing
+%\doublespacing
 \usepackage{sectsty}
 \usepackage[table]{xcolor}
 \allsectionsfont{\bfseries}
@@ -100,17 +95,17 @@ Biologists have long been fascinated by the occurrence of whole genome duplicati
 The theoretical treatment of population genetic models in polyploids has it origins in the Modern Synthesis with  Fisher, Haldane and Wright each contributing to the development of some of the earliest mathematical models for understanding the genetic patterns of inheritance in polyploids. Among the earliest of these works was Haldane's 1930 paper on autopolyploid inheritance in $2k$-ploid ($k=2,3,\dots$) organisms. Influenced in part by the works of Hermann J. Muller in tetraploid species of \textit{Primula} (\citeyear{muller1914primula}) and W. J. C. Lawrence in octoploid species of \textit{Dahlia} (\citeyear{lawrence1929dahlia}), Haldane generalized the combinatorial formulas for determining the frequencies of the different possible gametes formed from all genotype combinations for a $2k$-ploid. He also considered additional factors influencing gamete frequencies such as double reduction and the effects of partial selfing \citep{haldane1930autopolyploids}. Fisher's interest in polyploidy stemmed largely from observations made in the plant genus \textit{Lythrum}, which exhibited conspicuous patterns of trimorphic heterostyly \citep{fisher1941lythrum}. Empirical works by Nora Barlow (\citeyear{barlow1913heterostylism}, \citeyear{barlow1923trimorphic}), as well as initial investigations into the inheritance patterns of the three style types (Short, Mid, Long) by E. M. East (\citeyear{east1927lythrum}) formed the basis for Fisher's formulation of a model for the inheritance patterns of the Mid length style form in \textit{Lythrum salicaria} \citep{fisher1941lythrum}. He later added to this work by considering double reduction in the inheritance of the Mid length style and complemented his theoretical work through a collaboration with Kenneth Mather to complete crossing experiments \citep{fisher1943doublereduction,fisher1943mather}. Wright's contributions were concerned with the calculation of the distribution of allele frequencies in a $2k$-ploid and were largely an extension of his classic 1931 paper, \textit{Evolution in Mendelian populations}, and a previously published manuscript describing similar processes in diploids \citep{wright1931mendelianPops,wright1937geneFreqs,wright1938polyploid}. Wright was among the first to consider mutation, migration, selection and inbreeding in his formulation of the distribution of gene frequencies, which helped to establish future ideas about modeling allelic diffusion in a population. For example, it was noted by Motoo Kimura that much of the work on diffusion equations in population genetics could be applied to polyploids in a manner similar to Wright's derivation of the allele frequency distribution in polyploids \citep{kimura1964diffusion}.
 \medskip
 
-The foundation laid down by these early papers has led to the continuing development of population genetic models for polyploids, including models for understanding the rate of loss of genetic diversity and extensions of the coalescent in autotetraploids, as well as modifications of the multispecies coalescent for the inference of species networks containing allotetraploids \citep{moody1993autopolyploids,arnold2012autotetraploidCoal,jones2013allopolyploid}. Much of this progress was described in a recent review by Dufresne \etal{} (\citeyear{dufresne2014polyPopGen}), who outlined the current state of population genetics in polyploids regarding both molecular techniques and statistical models. Not surprisingly, one of the most promising developments for the future of population genetics in polyploids is the advancement of sequencing technologies. A particularly popular method of gathering large datasets for population genomics that utilizes high throughput sequencing is restriction-site associated DNA sequencing [RADseq] \citep{miller2007gbs,baird2008radTags,puritz2014demystifyingRAD}. There are few examples of RADseq experiments \citep[but see][]{ogden2013sturgeonRADseq,wang2013birchRADseq,logan-young2015polyploidSNP}. 
+The foundation laid down by these early papers has led to the continuing development of population genetic models for polyploids, including models for understanding the rate of loss of genetic diversity and extensions of the coalescent in autotetraploids, as well as modifications of the multispecies coalescent for the inference of species networks containing allotetraploids \citep{moody1993autopolyploids,arnold2012autotetraploidCoal,jones2013allopolyploid}. Much of this progress was described in a review by Dufresne \etal{} (\citeyear{dufresne2014polyPopGen}), who outlined the current state of population genetics in polyploids regarding both molecular techniques and statistical models. Not surprisingly, one of the most promising developments for the future of population genetics in polyploids is the advancement of sequencing technologies. A particularly popular method of gathering large datasets for genome scale inferences is restriction-site associated DNA sequencing [RADseq] \citep{miller2007gbs,baird2008radTags,puritz2014demystifyingRAD}. However, despite its popularity for population genetic inferences at the diploid level, there are much fewer examples of RADseq experiments conducted on polyploid taxa \citep[but see][]{ogden2013sturgeonRADseq,wang2013birchRADseq,logan-young2015polyploidSNP}. Among the primary reasons for the dearth in applying RADseq to polyploids is the issue of allelic dosage uncertainty (ADU), or the inability to fully determine the genotype of a polyploid organism when it is partially heterozygous. For a biallelic locus (allele A or B), a partially heterozygous polyploid will have high throughput sequencing reads containing both the A and the B allele. For a tetraploid, the possible genotypes are AAAB, AABB and ABBB. For a hexaploid they are AAAAAB, AAAABB, AAABBB, AABBBB and ABBBBB. In general, the number of possible genotypes for a biallelic locus of a partially heterozygous N-ploid ($\text{N}=3,4,5,\ldots$) is $\text{N}-1$. A possible solution to this problem would be to develop . However, this could lead to erroneous inferences when genotypes are simply fixed at point estimates based on read proportions without considering estimation error. Furthermore, when sequencing coverage is low, the number of genotypes that will appear to be equally probable increases with ploidy, making it difficult to distinguish among the possible partially heterozygous genotypes.
 \medskip
 
-\textbf{Paragraph 4: Explain what the model here accomplishes}---The model described here aims to address the problems associated with ADU by treating genotypes as a latent variable in a hierarchical Bayesian model. 
+In this paper we describe a model that aims to address the problems associated with ADU by treating genotypes as a latent variable in a hierarchical Bayesian model and using read counts as data. In this way, we preserve the uncertainty that is inherent in the genotypes of partially heterozygous polyploids by inferring a probability distribution across all possible values of the genotype, rather than treating the genotypes as being directly observed. Our model assumes that the ploidy level of the population is known and that the genotypes of individuals in the population are drawn from a single underlying allele frequency for each locus. These assumptions imply that alleles in the population are undergoing polysomic inheritance without double reduction, which most closely adheres to the inheritance patterns of an autopolyploid. We acknowledge that the model in its current form is an oversimplification of biological reality and realize that it does not apply to a large portion of polyploid taxa. Nevertheless, we believe that accounting for ADU by modeling genotype uncertainty has the potential to be applied more broadly via modifications of the probability model used for the inheritance of alleles, which could lead to more generalized population genetic models for polyploids (see the \textbf{Extensibility} section of the \textbf{Discussion}). 
 \medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Materials and methods}                  %%
+\section*{Materials and Methods}        %%
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\noindent Our aim is to estimate the frequency of a reference allele for each locus sampled from a population of known ploidy ($\psi$), where the reference allele can be chosen arbitrarily between the two alleles at a given biallelic SNP. To do this we extend the population genomic models of \cite{buerkle2013popModels}, which employ a Bayesian framework to model high throughput sequencing reads ($\bm{T},\bm{R}$), genotypes ($\bm{G}$) and allele frequencies ($\bm{p}$), to the case of arbitrary ploidy. The idea behind the model is to view the sequencing reads gathered for an individual as a random sample from the unobserved genotypes at each locus. Genotypes can then be treated as a parameter in a probability model that governs how likely it is that we see a particular number of sequencing reads carrying the reference allele. Similarly, we can treat genotypes as a random sample from the underlying allele frequency in the population (assuming Hardy-Weinberg equilibrium). This hierarchical setup addresses the problems associated with ADU by treating genotypes as a latent variable that can be integrated out using Markov chain Monte Carlo (MCMC).
+\noindent Our goal is to estimate the frequency of a reference allele for each locus sampled from a population of known ploidy ($\psi$), where the reference allele can be chosen arbitrarily between the two alleles at a given biallelic SNP. To do this we extend the population genomic models of \cite{buerkle2013popModels}, which employ a Bayesian framework to model high throughput sequencing reads ($\bm{T},\bm{R}$), genotypes ($\bm{G}$) and allele frequencies ($\bm{p}$), to the case of arbitrary ploidy. The idea behind the model is to view the sequencing reads gathered for an individual as a random sample from the unobserved genotype at each locus. Genotypes can then be treated as a parameter in a probability model that governs how likely it is that we see a particular number of sequencing reads carrying the reference allele. Similarly, we can treat genotypes as a random sample from the underlying allele frequency in the population (assuming Hardy-Weinberg equilibrium). This hierarchical setup addresses the problems associated with ADU by treating genotypes as a latent variable that can be integrated out using Markov chain Monte Carlo (MCMC).
 \medskip
 \subsection*{Model setup}
 \medskip
@@ -206,7 +201,7 @@ All simulations were performed using the R statistical package \citep{r2014} on 
 \medskip
 
 %%%%%%%%%%%%%%%
-\section*{Results}             %%
+\section*{Results}         %%
 %%%%%%%%%%%%%%%
 
 Varying the level of coverage and the number of individuals (Figure \#).
@@ -216,7 +211,7 @@ It is important to note that we are generating data under the model in the first
 \medskip
 
 %%%%%%%%%%%%%%%%%
-\section*{Discussion}              %%
+\section*{Discussion}         %%
 %%%%%%%%%%%%%%%%%
 
 Talk about general discussion points here and maybe include stuff about sources of bias here rather than dedicating an entire section to it.
@@ -262,6 +257,17 @@ Replace $\psi$ with a vector of values representing the ploidy of each individua
 The authors would like to thank the Ohio Supercomputer Center for access to computing resources and Nick Skomrock for assistance with deriving the full conditional distributions of the model in the diploid case. This manuscript was also greatly improved by comments from the Associate Editor, \textit{editor name}, and \# anonymous reviewers.
 \medskip
 
+
+%%%%%%%%%%%%%%%%%
+% References                       %%
+%%%%%%%%%%%%%%%%%
+
+\singlespacing
+
+\bibliographystyle{molEcol}
+\bibliography{references}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%
 \section*{Author Contributions}        %%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -274,17 +280,6 @@ Conceived of the study: PDB, LSK and ADW. PDB derived the polyploid model, ran t
 %%%%%%%%%%%%%%%%%%%%%%
 
 Scripts for simulating the datasets, analyzing them using Gibbs sampling and producing the figures from the resulting output can be all be found on GitHub (\url{https://github.com/pblischak/polyfreqs-ms-data}). We also provide an implementation of the Gibbs sampler for estimating allele frequencies in the R package \textsc{polyfreqs} (\url{https://github.com/pblischak/polyfreqs}). See the package vignette or wiki for more details (\url{https://github.com/pblischak/polyfreqs/wiki}).
-\vfill
-
-%%%%%%%%%%%%%%%%%
-% References                       %%
-%%%%%%%%%%%%%%%%%
-
-\singlespacing
-
-\bibliographystyle{molEcol}
-\bibliography{references}
-
 \vfill
 
 %%%%%%%%%%
