@@ -9,3 +9,5 @@
 5ind
 data/tetra
 data/hex
+doc/polyfreqs-ms.*
+!doc/polyfreqs-ms.tex
