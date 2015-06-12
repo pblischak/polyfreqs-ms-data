@@ -194,7 +194,7 @@ The conditional distribution for genotypes also has a natural interpretation due
 \subsection*{Simulation study}
 \medskip
 
-Simulations were performed to assess error rates in allele frequency estimation for tetraploid and hexaploid populations. Data were generated under the model by sampling genotypes from a binomial distribution conditional on a fixed, known allele frequency $(\,p_{\ell} = 0.01, 0.05, 0.1, 0.2, 0.4)$. Total read counts per individual were simulated for a single locus using a Poisson distribution with mean coverage equal to 5, 10, 20, 50 or 100 reads per individual. We then sampled the number of sequencing reads containing the reference allele from a binomial distribution conditional on the number of total reads, the genotype and sequencing error (Eq. \ref{likelihood}; $\epsilon$ fixed to 0.01). Finally, we varied the number of individuals sampled per population $(N = 5, 10, 20, 30)$ and ran all possible combinations of the simulation settings. Each combination of sequencing coverage, individuals sampled and allele frequency was analyzed using 100 replicates for both tetraploid and hexaploid populations for a total of  20,000 simulation runs. MCMC analyses using Gibbs sampling were run for 50,000 generations with parameter values stored every 50 samples. The first 25\% of the posterior was discarded as burn-in, resulting in 750 posterior samples for each replicate. Convergence on the stationary distribution, $P(\,\bm{p},\bm{G}|\bm{R},\epsilon)$, was assessed by examining trace plots for a subset of runs for each combination of settings and ensuring that the effective sample sizes (ESS) were greater than 200. Deviations from the known underlying allele frequency used to simulate each data set were assessed using the standard deviation of the posterior means of each replicate subtracted from the known value.
+Simulations were performed to assess error rates in allele frequency estimation for tetraploid and hexaploid populations. Data were generated under the model by sampling genotypes from a binomial distribution conditional on a fixed, known allele frequency $(\,p_{\ell} = 0.01, 0.05, 0.1, 0.2, 0.4)$. Total read counts were simulated for a single locus using a Poisson distribution with mean coverage ($\lambda$) equal to 5, 10, 20, 50 or 100 reads per individual. We then sampled the number of sequencing reads containing the reference allele from a binomial distribution conditional on the number of total reads, the genotype and sequencing error (Eq. \ref{likelihood}; $\epsilon$ fixed to 0.01). Finally, we varied the number of individuals sampled per population $(N = 5, 10, 20, 30)$ and ran all possible combinations of the simulation settings. Each combination of sequencing coverage, individuals sampled and allele frequency was analyzed using 100 replicates for both tetraploid and hexaploid populations for a total of  20,000 simulation runs. MCMC analyses using Gibbs sampling were run for 50,000 generations with parameter values stored every 50 samples. The first 25\% of the posterior was discarded as burn-in, resulting in 750 posterior samples for each replicate. Convergence on the stationary distribution, $P(\,\bm{p},\bm{G}|\bm{R},\epsilon)$, was assessed by examining trace plots for a subset of runs for each combination of settings and ensuring that the effective sample sizes (ESS) were greater than 200. Deviations from the known underlying allele frequency used to simulate each data set were assessed using the standard deviation of the posterior means of each replicate subtracted from the known value.
 \medskip
 
 All simulations were performed using the R statistical package \citep{r2014} on the Oakley cluster at the Ohio Supercomputer Center (\url{https://osc.edu}). Figures were generated using the R packages \textsc{ggplot2} \citep{wickham2009ggplot2}, \textsc{reshape} \citep{wickham2011plyr} and \textsc{plyr} \citep{wickham2007reshape} with additional figure manipulation completed using Inkscape (\url{https://inkscape.org}). MCMC diagnostics were done using the \textsc{coda} package \citep{plummer2006coda}.
@@ -204,39 +204,52 @@ All simulations were performed using the R statistical package \citep{r2014} on 
 \section*{Results}         %%
 %%%%%%%%%%%%%%%
 
-Varying the level of coverage and the number of individuals (Figure \#).
+\subsection*{Gibbs sampler}
 \medskip
 
-It is important to note that we are generating data under the model in the first place, which . However, the high levels of accuracy reported by some of the simulation conditions should not be interpreted as our being selective of settings that show that the model works well, but as validation that the model works when it is supposed to. Analyses of empirical data will obviously not have known values against which the estimated allele frequencies can be compared, but data collection can be informed by these simulations to optimize the number of individuals sequenced per population and the average coverage per locus per individual to obtain good results based on financial resources. Assessments of model adequacy would be also be straightforward to employ to 
+Our Gibbs sampling algorithm was able to accurately estimate allele frequencies for a number of simulation settings while simultaneously allowing for genotype uncertainty. Convergence (ESS values > 200) was achieved for all simulation replicates and all trace plots examined also indicated that the Markov chain had reached stationarity (Figure S1). We have implemented our Gibbs sampler as an R package---\textsc{polyfreqs}---which is available on GitHub (\url{https://github.com/pblischak/polyfreqs}). \textsc{polyfreqs} takes advantage of R's ability to incorporate C++ code via the \textsc{Rcpp} package, allowing for a faster implementation of our algorithm \citep{eddelbuettel2011rcpp,eddelbuettel2013rcppBook}.
+
+\medskip
+\subsection*{Simulation study}
+\medskip
+
+Varying the level of coverage and the number of individuals sampled had the largest effect on the accuracy of allele frequency estimation (Figure 1). Since allele frequencies are a population level parameter, it is not surprising that sampling more individuals from the population leads to better estimates. This appears to be the case even when sequencing coverage is quite low (5x, 10x), which corroborates the observations made by \cite{buerkle2013popModels}. Lower sequence coverage does effect the posterior distribution for allele frequencies and genotypes however, by increasing the posterior variance (Figure 2).
 \medskip
 
 %%%%%%%%%%%%%%%%%
 \section*{Discussion}         %%
 %%%%%%%%%%%%%%%%%
 
-Talk about general discussion points here and maybe include stuff about sources of bias here rather than dedicating an entire section to it.
-
-\medskip
-\subsection*{Potential sources of bias}
-\medskip
-
-There are two places where bias can be introduced into the estimation of allele frequencies using this model.
-\medskip
-
-At the level of read counts, unsampled alleles will obviously bias the resulting
-\medskip
-
-Another potential source of bias is treating genotypes among individuals in the population as independent. Polyploid taxa often become apomictic upon genome duplication, and asexual reproduction will generate clonal individuals with identical genotypes. This correlation 
+The inference of population genetic parameters and the demographic history of polyploid organisms has lagged behind that of diploids for decades. The difficulties associated with these inferences present themselves at two levels. The first of these is the widely known inability to determine the genotypes of polyploids due to ADU. Even though there have been theoretical developments in the description of models for polyploid taxa as early as the 1930s, a large portion of this population genetic theory relies on knowledge about individuals' genotypes \citep[e.g.,][]{haldane1930autopolyploids,wright1938polyploid}. The second complicating factor is the complexity of inheritance patterns and changes in mating systems that accompany WGD events. Polyploid organisms can sometimes mate by both outcrossing or selfing, and can display mixed inheritance patterns at different loci in the genome \citep{dufresne2014polyPopGen}. If genotypes were known, then it might be possible to develop models for dealing with and inferring rates of selfing versus outcrossing, as well as understanding inheritance patterns across the genome. However, ADU only compounds the problems associated with these inferences, making the development and application of appropriate models far more difficult \citep[but see list of software in][]{dufresne2014polyPopGen}. The model we have presented here deals with the first of these two issues by not treating genotypes as observed quantities. Instead, we use the read counts generated by high throughput sequencing platforms as our observed data and integrate across genotype uncertainty when inferring other parameters and thus bypassing the problems caused by ADU.
 
 \medskip
 \subsection*{Model adequacy}
 \medskip
 
-Talk about the adequacy of the model for describing biological reality of polyploids. Emphasize the fact that the model directly contributes to ameliorate the issues associated with ADU.
+As noted earlier, the probability model that we use for the inheritance of alleles is one of polysomy without double reduction. In many cases this model may be inappropriate but it can still be informative to check for loci that do or do not follow the model that we assume. Below we describe a simple procedure for rejecting our model of inheritance on a per locus basis using comparisons with the posterior predictive distribution of sequencing reads ($\tilde{\bm{R}}$), which is given by Eq. \ref{post_pred_distr}.
 
-\begin{equation}
+\begin{equation}\label{post_pred_distr}
 P(\tilde{\bm{R}}|\bm{R},\epsilon) = \int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R},\epsilon)\right) \text{d}\bm{p}\, .
 \end{equation}
+
+\noindent Model checking is an important part of making statistical inferences and can play an important role in understanding when a model adequately describes the data being analyzed. In the case of our model, it can serve as a basis for understanding the inheritance patterns of the organism being studied by determining which loci adhere to a simple pattern of polysomic inheritance.
+\medskip
+
+Given $m$ posterior samples for the allele frequencies at each locus, $\left\{p_{\ell}^{[1]},p_{\ell}^{[2]},\ldots,p_{\ell}^{[m]} \right\}$, 
+\medskip
+
+\noindent For each locus:
+
+\begin{enumerate}
+  \item Simulate new genotype values $\left( \tilde{g}_{i \ell}^{[m]}\right)$ for all individuals for each $p_{\ell}^{[m]}$ by drawing from a Binomial$\left( \psi,p_{\ell}^{[m]} \right)$.
+  \item Simulate new sequencing read counts $\left( \tilde{r}_{i \ell}^{[m]} \right)$ from each new genotype for all individuals by drawing from a Binomial$\left(t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$ [Eq. \ref{likelihood}].
+  \item Calculate the Binomial likelihood for each of the $m$ samples of sequencing reads as the product across individuals at locus $\ell$: $\prod_{i=1}^{N}P\left(\tilde{r}_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
+  \item Calculate the Binomial likelihood for the observed read counts and compare it to the distribution of $m$ likelihood values for the predicted read counts to determine if the observed value falls within the 95\% Credible Interval.
+\end{enumerate}
+
+\medskip
+
+We implement this posterior predictive model checking procedure in the \textsc{polyfreqs} package with the function \texttt{polyfreqs\_pps}.
 
 \medskip
 \subsection*{Extensibility}
