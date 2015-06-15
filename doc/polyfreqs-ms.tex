@@ -92,6 +92,9 @@ Despite the ever increasing opportunity to collect large-scale datasets for popu
 Biologists have long been fascinated by the occurrence of whole genome duplication (WGD) in natural populations and have recognized its role in the generation of biodiversity \citep{ClausKeckHies1940,StebbinsVariationEvolution,GrantPlantSpeciation,otto2000polyploidy}. Though WGD is thought to have occurred at some point in nearly every branch of the Tree of Life (plants, animals and fungi), it is a particularly common phenomenon in plants and is regarded by many to be an important factor in plant diversification \citep{wood2009polyploid,soltisd2009diversification,scarpino2014polyploid}. The role of polyploidy in plant evolution was originally considered by some to be a ``dead-end'' \citep{StebbinsVariationEvolution,wagner1970noise,soltisd2014stebbins} but, since its first discovery in the early twentieth century, polyploidy has been continually studied in nearly all areas of botany \citep{winge1917polyploidy,Winkler1916polyploidy,ClausKeckHies1945polyploidy,GrantPlantSpeciation,StebbinsVariationEvolution,soltisD2003polyploid,soltisd2010polyploidUnknowns,soltai2009roleOfHybridization,ramsey2014polEcoProcRoySoc}. Though fewer examples of WGD are currently known for animal systems, groups such as amphibians, fish, and reptiles all exhibit polyploidy \citep{allendorf1984tetraploidFish,gregory2005polyploidyAnimals}. Ancient genome duplications are also thought to have played an important role in the evolution of both plants and animals, occurring in the lineages preceeding the seed plants, angiosperms and vertebrates \citep{ohno1970geneDuplication,otto2000polyploidy,furlong2001animalOctoploid,jiao2011ancientWGD}. These ancient WGD events during the early history of seed plants and angiosperms have also been followed by several more WGDs in all major plant groups \citep{cui2006genomeDuplication,scarpino2014polyploid,canon2014polyploidyLegumes}. Recent experimental evidence has also demonstrated increased survivorship and adaptability to foreign environments of polyploid taxa when compared with their lower ploidy relatives \citep{ramsey2011polyploidEcology,Selmecki2015yeastAdaptation}.
 \medskip
 
+Polyploids are generally broken into two types based on how they are formed: auto- and allopolyploids. Autopolyploids form when a WGD event occurs within a single evolutionary lineage. Allopolyploids are formed by hybridization between two separately evolving lineages followed by WGD \citep{StebbinsVariationEvolution}. 
+\medskip
+
 The theoretical treatment of population genetic models in polyploids has it origins in the Modern Synthesis with  Fisher, Haldane and Wright each contributing to the development of some of the earliest mathematical models for understanding the genetic patterns of inheritance in polyploids. Among the earliest of these works was Haldane's 1930 paper on autopolyploid inheritance in $2k$-ploid ($k=2,3,\dots$) organisms. Influenced in part by the works of Hermann J. Muller in tetraploid species of \textit{Primula} (\citeyear{muller1914primula}) and W. J. C. Lawrence in octoploid species of \textit{Dahlia} (\citeyear{lawrence1929dahlia}), Haldane generalized the combinatorial formulas for determining the frequencies of the different possible gametes formed from all genotype combinations for a $2k$-ploid. He also considered additional factors influencing gamete frequencies such as double reduction and the effects of partial selfing \citep{haldane1930autopolyploids}. Fisher's interest in polyploidy stemmed largely from observations made in the plant genus \textit{Lythrum}, which exhibited conspicuous patterns of trimorphic heterostyly \citep{fisher1941lythrum}. Empirical works by Nora Barlow (\citeyear{barlow1913heterostylism}, \citeyear{barlow1923trimorphic}), as well as initial investigations into the inheritance patterns of the three style types (Short, Mid, Long) by E. M. East (\citeyear{east1927lythrum}) formed the basis for Fisher's formulation of a model for the inheritance patterns of the Mid length style form in \textit{Lythrum salicaria} \citep{fisher1941lythrum}. He later added to this work by considering double reduction in the inheritance of the Mid length style and complemented his theoretical work through a collaboration with Kenneth Mather to complete crossing experiments \citep{fisher1943doublereduction,fisher1943mather}. Wright's contributions were concerned with the calculation of the distribution of allele frequencies in a $2k$-ploid and were largely an extension of his classic 1931 paper, \textit{Evolution in Mendelian populations}, and a previously published manuscript describing similar processes in diploids \citep{wright1931mendelianPops,wright1937geneFreqs,wright1938polyploid}. Wright was among the first to consider mutation, migration, selection and inbreeding in his formulation of the distribution of gene frequencies, which helped to establish future ideas about modeling allelic diffusion in a population. For example, it was noted by Motoo Kimura that much of the work on diffusion equations in population genetics could be applied to polyploids in a manner similar to Wright's derivation of the allele frequency distribution in polyploids \citep{kimura1964diffusion}.
 \medskip
 
@@ -106,11 +109,12 @@ In this paper we describe a model that aims to address the problems associated w
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \noindent Our goal is to estimate the frequency of a reference allele for each locus sampled from a population of known ploidy ($\psi$), where the reference allele can be chosen arbitrarily between the two alleles at a given biallelic SNP. To do this we extend the population genomic models of \cite{buerkle2013popModels}, which employ a Bayesian framework to model high throughput sequencing reads ($\bm{T},\bm{R}$), genotypes ($\bm{G}$) and allele frequencies ($\bm{p}$), to the case of arbitrary ploidy. The idea behind the model is to view the sequencing reads gathered for an individual as a random sample from the unobserved genotype at each locus. Genotypes can then be treated as a parameter in a probability model that governs how likely it is that we see a particular number of sequencing reads carrying the reference allele. Similarly, we can treat genotypes as a random sample from the underlying allele frequency in the population (assuming Hardy-Weinberg equilibrium). This hierarchical setup addresses the problems associated with ADU by treating genotypes as a latent variable that can be integrated out using Markov chain Monte Carlo (MCMC).
+
 \medskip
 \subsection*{Model setup}
 \medskip
 
-Here we consider a sample of $N$ individuals from a single population of ploidy level $\psi\: (\psi\geq2)$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of high throughput sequencing reads mapping to each locus for each individual: \tmat{} and \rmat. The $N\times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N\times L$ matrix containing the number of sampled reads with the chosen reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes, the probability distribution for sequencing reads can be factored as
+Here we consider a sample of $N$ individuals from a single population of ploidy level $\psi$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of high throughput sequencing reads mapping to each locus for each individual: \rmat{} and \tmat. The $N \times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N \times L$ matrix containing the number of sampled reads with the reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes, the probability distribution for sequencing reads can be factored as
 
 \begin{equation}\label{factored_lik}
 P(\bm{R}|\bm{T},\bm{G}, \epsilon) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell}, \epsilon)\,.
@@ -229,30 +233,34 @@ Because our model approximates the joint posterior distribution of allele freque
 \subsection*{Model adequacy}
 \medskip
 
-As noted earlier, the probability model that we use for the inheritance of alleles is one of polysomy without double reduction. In many cases this model may be inappropriate but it can still be informative to check for loci that do or do not follow the model that we assume. Below we describe a simple procedure for rejecting our model of inheritance on a per locus basis using comparisons with the posterior predictive distribution of sequencing reads ($\tilde{\bm{R}}$), which is given by Eq. \ref{post_pred_distr}.
+As noted earlier, the probability model that we use for the inheritance of alleles is one of polysomy without double reduction. In many cases this model may be inappropriate but it can still be informative to check for loci that do or do not follow the model that we assume. Below we describe a simple procedure for rejecting our model of inheritance on a per locus basis using comparisons with the posterior predictive distribution of sequencing reads ($\tilde{\bm{R}}$), which is given by Eq. \ref{post_pred_distr}
 
 \begin{equation}\label{post_pred_distr}
 P(\tilde{\bm{R}}|\bm{R},\epsilon) = \int \left(\displaystyle\sum_{\bm{G}} P(\tilde{\bm{R}}|\bm{p},\bm{G}) P(\bm{p},\bm{G}|\bm{R},\epsilon)\right) \text{d}\bm{p}\, .
 \end{equation}
 
-\noindent Model checking is an important part of making statistical inferences and can play an important role in understanding when a model adequately describes the data being analyzed. In the case of our model, it can serve as a basis for understanding the inheritance patterns of the organism being studied by determining which loci adhere to a simple pattern of polysomic inheritance.
+\noindent Model checking is an important part of making statistical inferences and can play a role in understanding when a model adequately describes the data being analyzed. In the case of our model, it can serve as a basis for understanding the inheritance patterns of the organism being studied by determining which loci adhere to a simple pattern of polysomic inheritance.
 \medskip
 
-Given $m$ posterior samples for the allele frequencies at each locus, $\left\{p_{\ell}^{[1]},p_{\ell}^{[2]},\ldots,p_{\ell}^{[m]} \right\}$, 
+Given $M$ posterior samples for the allele frequencies at each locus, $\left\{p_{\ell}^{[1]},p_{\ell}^{[2]},\ldots,p_{\ell}^{[M]} \right\}$, we will simulate new values for the genotypes ($\tilde{g}_{i \ell}$) and reference read counts ($\tilde{r}_{i \ell}$) for all individuals and use the Binomial likelihood (Eq. \ref{likelihood}) as a summary statistic for comparing the observed read count likelihood to the distribution of the predicted read count likelihoods. The use of the likelihood as a summary statistic has been a common practice in comparisons of nucleotide substitution models, as well as models for comparative phylogenetics \citep{ripplinger2010DNAmodels,pennell2015adequacy}. The procedure is as follows:
 \medskip
-
-\noindent For each locus:
 
 \begin{enumerate}
-  \item Simulate new genotype values $\left( \tilde{g}_{i \ell}^{[m]}\right)$ for all individuals for each $p_{\ell}^{[m]}$ by drawing from a Binomial$\left( \psi,p_{\ell}^{[m]} \right)$.
-  \item Simulate new sequencing read counts $\left( \tilde{r}_{i \ell}^{[m]} \right)$ from each new genotype for all individuals by drawing from a Binomial$\left(t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$ [Eq. \ref{likelihood}].
-  \item Calculate the Binomial likelihood for each of the $m$ samples of sequencing reads as the product across individuals at locus $\ell$: $\prod_{i=1}^{N}P\left(\tilde{r}_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
-  \item Calculate the Binomial likelihood for the observed read counts and compare it to the distribution of $m$ likelihood values for the predicted read counts to determine if the observed value falls within the 95\% Credible Interval.
+  \item For locus $\ell = 1,\ldots,L$:
+  \begin{enumerate}[label={\arabic{enumi}.\arabic*.}]
+    \item For posterior sample $m = 1,\ldots,M$:
+    \begin{enumerate}[label={\arabic{enumi}.\arabic{enumi}.\arabic*.}]
+      \item Simulate new genotype values $\left( \tilde{g}_{i \ell}^{[m]}\right)$ for all individuals ($i = 1,\ldots,N$) by drawing from a $\text{Binomial}\left( \psi,p_{\ell}^{[m]} \right)$.
+      \item Simulate new reference read counts $\left( \tilde{r}_{i \ell}^{[m]} \right)$ from each new genotype for all individuals by drawing from Eq. \ref{likelihood}.
+      \item Calculate the Binomial likelihood for sample $m$ as the product across individuals: $\mathcal{L}_{\ell}^{[m]} = \prod_{i=1}^{N}P\left(\tilde{r}_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
+    \end{enumerate}
+    \item Calculate the Binomial likelihood for the observed read counts, $\mathcal{L}_{\ell}^{obs}$, and compare it to the distribution of likelihood values for the predicted reference read counts, $\left\{ \mathcal{L}_{\ell}^{[1]},\ldots,\mathcal{L}_{\ell}^{[M]}\right\}$.
 \end{enumerate}
-
+\item Determine if the observed value falls within the 95\% Credible Interval (CI). Repeat for each locus.
+\end{enumerate}
 \medskip
 
-We implement this posterior predictive model checking procedure in the \textsc{polyfreqs} package with the function \texttt{polyfreqs\_pps}.
+Observed values of the Binomial likelihood which fall outside of the 95\% CI provide evidence that the locus being examined does not follow a pattern of polysomic inheritance without double reduction. . We implement this posterior predictive model checking procedure in the \textsc{polyfreqs} package with the function \texttt{polyfreqs\_pps}.
 
 \medskip
 \subsection*{Extensibility}
@@ -264,7 +272,12 @@ Talk about how the model can serve as a jumping off point for new models that no
 Replace $\psi$ with a vector of values representing the ploidy of each individual $(\bm{\psi} = \{\psi_1,\ldots,\psi_N\})$.
 \medskip
 
+%%%%%%%%%%%%%%%%%
+\section*{Conclusions}      %%
+%%%%%%%%%%%%%%%%%
 
+Our model is one with great potential$\ldots$
+\medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgements}           %%
@@ -283,6 +296,7 @@ The authors would like to thank the Ohio Supercomputer Center for access to comp
 \bibliographystyle{molEcol}
 \bibliography{references}
 
+%\doublespacing
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section*{Author Contributions}        %%
@@ -302,7 +316,7 @@ Scripts for simulating the datasets, analyzing them using Gibbs sampling and pro
 % Tables          %%
 %%%%%%%%%%
 
-\begin{table}[b]
+\begin{table}
 \centering
 \rowcolors{1}{white}{gray!25}
 \caption{\textbf{Notation and symbols used in the description of the model for estimating allele frequencies in polyploids}. Vector and matrix forms of the variables are also provided when appropriate. }
@@ -319,8 +333,10 @@ $i$ & Index for individuals ($i\; \in \{1,\ldots,N\}$). \\
 $\psi$ & The ploidy level of individuals in the population (e.g., tetraploid: $\psi$=4). \\
 $p_{\ell}$ & Frequency of the reference allele at locus $\ell$. [$\bm{p}$] \\
 $g_{i \ell}$ & The number of copies of the reference allele for individual $i$ at locus $\ell$. [$\bm{G}$] \\
+$\tilde{g}_{i \ell}$ & Simulated genotype for posterior predictive model checking. \\
 $t_{i \ell}$ & The total number of reads for individual $i$ at locus $\ell$. [$\bm{T}$] \\
 $r_{i \ell}$ & The number of reads with the reference allele for individual $i$ at locus $\ell$. [$\bm{R}$] \\
+$\tilde{r}_{i \ell}$ & Simulated reference read count for posterior predictive model checking. [$\tilde{\bm{R}}$] \\
 $\epsilon$ & Sequencing error. \\
 \hline
 \end{tabular}
