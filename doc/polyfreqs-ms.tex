@@ -248,15 +248,16 @@ Given $M$ posterior samples for the allele frequencies at each locus, $\left\{p_
     \begin{enumerate}[label={\arabic{enumi}.\arabic{enumi}.\arabic*.}]
       \item Simulate new genotype values $\left( \tilde{g}_{i \ell}^{[m]}\right)$ for all individuals ($i = 1,\ldots,N$) by drawing from a $\text{Binomial}\left( \psi,p_{\ell}^{[m]} \right)$.
       \item Simulate new reference read counts $\left( \tilde{r}_{i \ell}^{[m]} \right)$ from each new genotype for all individuals by drawing from Eq. \ref{likelihood}.
-      \item Calculate the Binomial likelihood for sample $m$ as the product across individuals: $\mathcal{L}_{\ell}^{[m]} = \prod_{i=1}^{N}P\left(\tilde{r}_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
+      \item Calculate the Binomial likelihood for the simulated data for sample $m$ as the product across individuals: $\mathcal{\tilde{L}}_{\ell}^{[m]} = \prod_{i=1}^{N}P\left(\tilde{r}_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
+      \item Calculate the Binomial likelihood for the observed data for sample $m$ as the product across individuals: $\mathcal{L}_{\ell}^{[m]} = \prod_{i=1}^{N}P\left(r_{i \ell}^{[m]} | t_{i \ell},\tilde{g}_{i \ell}^{[m]},\epsilon\right)$.
     \end{enumerate}
-    \item Calculate the Binomial likelihood for the observed read counts, $\mathcal{L}_{\ell}^{obs}$, and compare it to the distribution of likelihood values for the predicted reference read counts, $\left\{ \mathcal{L}_{\ell}^{[1]},\ldots,\mathcal{L}_{\ell}^{[M]}\right\}$.
+    \item Calculate the difference between the Binomial likelihoods for the observed read counts and the simulated read counts $\left\{ \mathcal{L}_{\ell}^{[1]}-\mathcal{\tilde{L}}_{\ell}^{[1]},\ldots,\mathcal{L}_{\ell}^{[M]}-\mathcal{\tilde{L}}_{\ell}^{[M]}\right\}$.
 \end{enumerate}
-\item Determine if the observed value falls within the 95\% quantile of the distribution of predicted likelihood values.
+\item Determine if the 95\% highest posterior density (HPD) interval of the distribution of likelihood differences contains 0.
 \end{enumerate}
 \medskip
 
-Observed values of the Binomial likelihood which fall outside of the 95\% quantile provide evidence that the locus being examined does not follow a pattern of strict polysomic inheritance. We implement this posterior predictive model checking procedure in the \textsc{polyfreqs} package with the function \texttt{polyfreqs\_pps}.
+When the distribution of the differences in likelihoods between the observed and simulated datasets does not contain 0 in the 95\% HPD interval, it provides evidence that the locus being examined does not follow a pattern of strict polysomic inheritance. We implement this posterior predictive model checking procedure in the \textsc{polyfreqs} package with the function \texttt{polyfreqs\_pps}.
 
 \medskip
 \subsection*{Extensibility}
