@@ -12,3 +12,4 @@ data/hex
 doc/polyfreqs-ms.*
 !doc/polyfreqs-ms.tex
 Makefile
+letters
