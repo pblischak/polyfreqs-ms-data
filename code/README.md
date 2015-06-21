@@ -4,6 +4,8 @@ This folder contains scripts for running the simulations conducted in Blischak e
 They include scripts for writing PBS batch files for submission to the Ohio Supercomputer, the scripts for running **polyfreqs** and for analyzing the output. 
 A more detailed description of each file is below.
 
+--------
+
 ## `write_polyfreqs_pbs.py`
 
 `write_polyfreqs_pbs.py` is a simple python script for writing PBS style submission files for batch processing on high-powered computing (HPC) environments. 
@@ -17,15 +19,33 @@ It can be run using the following command:
 python write_polyfreqs_pbs.py
 ```
 
+--------
+
 ## `run_polyfreqs.sh` and `run_polyfreqs.R`
+
+* **-i**    The number of individuals.
+* **-f**    The allele frequency for the simulated locus.
+* **-p**    The ploidy levels of individuals in the population.
+* **-m**    The name of the output file containing the MCMC samples.
+* **-c**    The average sequencing coverage per individual per locus.
 
 ```
 bash run_polyfreqs.sh -i 20 -f 0.2 -p 4 -m mcmc.out -c 20
 ```
 
+--------
+
 ## `calc_tetra_stats.R` and `calc_hex_stats.R`
 
 
+
+```
+R CMD batch calc_tetra_stats.R
+R CMD batch calc_hex_stats.R
+```
+
+
+--------
 
 ## `pbs_scripts/`
 

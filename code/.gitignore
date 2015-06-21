@@ -2,3 +2,8 @@
 .Rproj.user
 *~
 *.out
+polyfreqs.R
+polyfreqs.sh
+calc-stats.R
+*-model.R
+*.Rproj
