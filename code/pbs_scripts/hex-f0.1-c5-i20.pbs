@@ -1,0 +1,15 @@
+#PBS -N polyfreqs-hex-f0.1-c5-i20
+#PBS -l walltime=1:00:00
+#PBS -l nodes=1:ppn=8
+#PBS -m ae
+#PBS -j oe
+set -x
+
+cp $HOME/code/run_polyfreqs.sh $HOME/code/run_polyfreqs.R $TMPDIR/
+cd $TMPDIR/ 
+
+module load R
+
+bash run_polyfreqs.sh -i 20 -c 5 -f 0.1 -m hex-f0.1-c5-i20-mcmc.out -p 6
+
+mv hex-f0.1-c5-i20-mcmc.out $HOME/code/sim_data/
