@@ -23,25 +23,39 @@ python write_polyfreqs_pbs.py
 
 ## `run_polyfreqs.sh` and `run_polyfreqs.R`
 
+This pair of scripts can be used to simulate and analyze high throughput read count data using **polyfreqs**. 
+The read count data are simulated under the model described in the **polyfreqs** manuscript.
+The script inside of `run_polyfreqs.sh` can act as a wrapper for running the `run_polyfreqs.R`. 
+The R script can be run on its own, however, without the use of the bash script. 
+Using the flags with the bash script is a bit easier than trying to remember the order of command line arguments for the R script.
+
 * **-i**    The number of individuals.
 * **-f**    The allele frequency for the simulated locus.
 * **-p**    The ploidy levels of individuals in the population.
 * **-m**    The name of the output file containing the MCMC samples.
 * **-c**    The average sequencing coverage per individual per locus.
 
+A simulation run can be initiated using the following command (make sure the the `run_polyfreqs.R` script is in the same folder):
+
 ```
-bash run_polyfreqs.sh -i 20 -f 0.2 -p 4 -m mcmc.out -c 20
+bash run_polyfreqs.sh -i 20 -c 20 -f 0.2 -m mcmc.out -p 4
+```
+
+The equivalent command for using `run_polyfreqs.R` alone is:
+
+```
+Rscript run_polyfreqs.R 20 20 0.2 mcmc.out 4
 ```
 
 --------
 
-## `calc_tetra_stats.R` and `calc_hex_stats.R`
+## `calc-tetra-stats.R` and `calc-hex-stats.R`
 
 
 
 ```
-R CMD batch calc_tetra_stats.R
-R CMD batch calc_hex_stats.R
+R CMD batch calc-tetra-stats.R
+R CMD batch calc-hex-stats.R
 ```
 
 
@@ -53,4 +67,4 @@ A folder containing all of the PBS submission files (there are 200).
 
 ## `sim_data/`
 
-The results of the MCMC analyses run using polyfreqs which are analyzed using the `calc_*_stats.R` scripts.
+The results of the MCMC analyses run using **polyfreqs** which are analyzed using the `calc-*-stats.R` scripts.

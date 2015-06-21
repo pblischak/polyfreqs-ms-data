@@ -5,7 +5,7 @@ See Blischak *et al*. (2015) for more details on the model.
 
 ## Getting the scripts
 
-These scripts can be obtained by simply cloning this git repository using the command:
+These scripts can be obtained by cloning this git repository using the command:
 
 ```
 git clone https://github.com/pblischak/polyfreqs-ms-data.git
@@ -25,8 +25,8 @@ pdflatex polyfreqs-ms
 
 ## `code/`
 
-This directory has all of the summary data (means of means) for the posterior distributions of allele frequencies for the 
+This directory has all of the scripts for simulating and analyzing the data in the manuscript.
 
 ## `fig/`
 
-Contains all of the figures for the manuscript in raw format (i.e., prior to manipulation in Inkscape).
+Contains all of the figures for the manuscript prior to manipulation in <a href="https://inkscape.org" target="_blank">Inkscape</a>.
