@@ -1,8 +1,10 @@
+# `doc/`
+
 ### Citation
 
 Blischak, P. D., L. S. Kubatko and A. D. Wolfe. 2015. 
 Accounting for genotype uncertainty in the estimation of allele frequencies in autopolyploids. 
-*In review*. <a href="https://biorxiv.org" target="_blank">bioRxiv</a>: **doi**.
+*In review*. <a href="http://biorxiv.org/" target="_blank">bioRxiv</a>: **doi**.
 
 ## Overview
 
