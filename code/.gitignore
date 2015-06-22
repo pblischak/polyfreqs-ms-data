@@ -7,3 +7,6 @@ polyfreqs.sh
 calc-stats.R
 *-model.R
 *.Rproj
+*.svg
+tetra-means-df.txt
+hex-means-df.txt
