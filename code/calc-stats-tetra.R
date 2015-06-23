@@ -64,11 +64,11 @@ heat.map0.1<-ggplot2::ggplot(std.dev0.1m, aes(Num_Ind, Coverage)) + geom_tile(ae
 heat.map0.2<-ggplot2::ggplot(std.dev0.2m, aes(Num_Ind, Coverage)) + geom_tile(aes(fill = value), colour="white") + scale_fill_gradient(low="grey98", high="black")
 heat.map0.4<-ggplot2::ggplot(std.dev0.4m, aes(Num_Ind, Coverage)) + geom_tile(aes(fill = value), colour="white") + scale_fill_gradient(low="grey98", high="black")
 
-tetra.plot0.01<-heat.map0.01 + theme_grey(base_size = 10) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
-tetra.plot0.05<-heat.map0.05 + theme_grey(base_size = 10) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
-tetra.plot0.1<-heat.map0.1 + theme_grey(base_size = 10) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
-tetra.plot0.2<-heat.map0.2 + theme_grey(base_size = 10) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
-tetra.plot0.4<-heat.map0.4 + theme_grey(base_size = 10) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
+tetra.plot0.01<-heat.map0.01 + theme_grey(base_size = 12) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
+tetra.plot0.05<-heat.map0.05 + theme_grey(base_size = 12) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
+tetra.plot0.1<-heat.map0.1 + theme_grey(base_size = 12) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
+tetra.plot0.2<-heat.map0.2 + theme_grey(base_size = 12) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
+tetra.plot0.4<-heat.map0.4 + theme_grey(base_size = 12) + labs(x = "",y="") + scale_x_discrete(limits=c("i5","i10","i20","i30"), expand=c(0,0)) + scale_y_discrete(limits=c("c5","c10","c20","c50","c100"),expand=c(0,0)) + theme(legend.title=element_blank(), axis.ticks = element_blank())
 
 # Save as 3in x 2in svd files @ 300dpi
 
