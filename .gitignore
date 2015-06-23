@@ -13,3 +13,5 @@ doc/polyfreqs-ms.*
 !doc/polyfreqs-ms.tex
 Makefile
 letters
+misc
+data
