@@ -23,7 +23,7 @@ python write_polyfreqs_pbs.py
 ## run_polyfreqs.sh and run_polyfreqs.R
 
 Make sure that you have **polyfreqs** installed before trying to use these scripts. 
-Instructions for installing the package can be found <a href="https://github.com/pblischak/polyfreqs" target="_blank">here</a>.
+Instructions for installing it can be found <a href="https://github.com/pblischak/polyfreqs" target="_blank">here</a>.
 
 This pair of scripts can be used to simulate and analyze high throughput read count data using **polyfreqs**. 
 The read count data are simulated under the model described in the **polyfreqs** manuscript.
