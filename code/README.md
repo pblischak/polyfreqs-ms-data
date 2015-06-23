@@ -15,17 +15,16 @@ The script writes all of the PBS files (.pbs in the `pbs_scripts/` folder) for t
 
 It can be run using the following command:
 
-```
+```bash
 python write_polyfreqs_pbs.py
 ```
 
---------
 
 ## `run_polyfreqs.sh` and `run_polyfreqs.R`
 
 This pair of scripts can be used to simulate and analyze high throughput read count data using **polyfreqs**. 
 The read count data are simulated under the model described in the **polyfreqs** manuscript.
-The script inside of `run_polyfreqs.sh` can act as a wrapper for running the `run_polyfreqs.R`. 
+The script inside of `run_polyfreqs.sh` can act as a wrapper for running `run_polyfreqs.R`. 
 The R script can be run on its own, however, without the use of the bash script. 
 Using the flags with the bash script is a bit easier than trying to remember the order of command line arguments for the R script.
 
@@ -37,29 +36,47 @@ Using the flags with the bash script is a bit easier than trying to remember the
 
 A simulation run can be initiated using the following command (make sure the the `run_polyfreqs.R` script is in the same folder):
 
-```
+```bash
 bash run_polyfreqs.sh -i 20 -c 20 -f 0.2 -m mcmc.out -p 4
 ```
 
 The equivalent command for using `run_polyfreqs.R` alone is:
 
-```
+```bash
 Rscript run_polyfreqs.R 20 20 0.2 mcmc.out 4
 ```
 
---------
 
 ## `calc-tetra-stats.R` and `calc-hex-stats.R`
 
+R packages needed: **ggplot2**, **reshape**, **plyr**, **coda**.
 
+This is the code for calculating the error rates for the simulation study presented in the manuscript. 
+It also produces the heat maps using **ggplot2** (with the help of **reshape** and **plyr**). 
+A lot of the code for the plots is based on this <a href="https://learnr.wordpress.com/2010/01/26/ggplot2-quick-heatmap-plotting/" target="_blank">blog post</a>. 
+MCMC diagnostics are also run using the **coda** package, looking mostly at the effective sample sizes for the allele frequency estimates at each locus. 
+Traceplots can be generated using the following snippet of code:
 
+```r
+library(coda)
+p_table <- read.table("sim_data/hex-f0.01-c10-i10-mcmc.out", header=T, row.names=1)
+p_mcmc <- mcmc(p_table, start=100, end=100000, thin=100)
+
+# Flip through traceplots by pushing enter (there will be 100)
+par(ask=T)
+traceplot(p_mcmc)
+
+# Make sure you reset the `ask` parameter if you are going to keep plotting other things: `par(ask=F)`.
 ```
+
+
+
+```bash
 R CMD batch calc-tetra-stats.R
 R CMD batch calc-hex-stats.R
 ```
 
 
---------
 
 ## `pbs_scripts/`
 
