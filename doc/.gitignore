@@ -3,3 +3,4 @@
 Makefile
 *.eps
 *.pdf
+fig/*.pdf
