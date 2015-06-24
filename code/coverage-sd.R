@@ -1,7 +1,7 @@
 ###################################
 # Script for generating Figure 4.
 #
-# Requires ggplot2
+# Requires ggplot2 and Hmisc.
 ###################################
 library(ggplot2)
 
@@ -18,6 +18,18 @@ cov_df <- data.frame(cov = factor(rep(c("c5","c10","c20","c50","c100"), each=100
                             apply(hex_c50[251:1000,],2,sd), 
                             apply(hex_c100[251:1000,],2,sd)))
 
-cov_plot <- ggplot(cov_df, aes(x=cov, y=sd)) + geom_violin(trim=F) + ggtitle("Effect of coverage on posterior standard deviation")
-new_cov_plot <- cov_plot + theme_grey(base_size=14) + theme(axis.title.x = element_blank()) + ylab("Standard deviation") + scale_x_discrete(limits=c("c5","c10","c20","c50","c100")) + stat_summary(fun.data="mean_sdl", mult=1, geom="pointrange", width=0.2, color="grey20") + stat_summary(fun.y=mean, colour="blue", width=2, geom="line", aes(group="c5"))
+
+cov_plot <- ggplot(cov_df, aes(x=cov, y=sd)) 
+			+ geom_violin(trim=F) 
+			+ ggtitle("Effect of coverage on posterior standard deviation")
+			
+			
+new_cov_plot <- cov_plot 
+				+ theme_grey(base_size=14) 
+				+ theme(axis.title.x = element_blank()) 
+				+ ylab("Standard deviation") + scale_x_discrete(limits=c("c5","c10","c20","c50","c100")) 
+				+ stat_summary(fun.data="mean_sdl", mult=1, geom="pointrange", width=0.2, color="grey20") 
+				+ stat_summary(fun.y=mean, colour="blue", width=2, geom="line", aes(group="c5"))
+				
+				
 ggsave("coverage-sd.svg",plot=new_cov_plot,dpi=300)
