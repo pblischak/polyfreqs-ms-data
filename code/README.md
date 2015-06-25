@@ -72,14 +72,24 @@ traceplot(p_mcmc)
 # Make sure you reset the `ask` parameter if you are going to keep plotting other things: `par(ask=F)`.
 ```
 
-
+Running each script can be done by either sourcing them in an R session (e.g., `source("calc-tetra-stats.R")`) or running them using the command line:
 
 ```
 R CMD batch calc-tetra-stats.R
 R CMD batch calc-hex-stats.R
 ```
 
+## coverage-sd.R
 
+R packages needed: **ggplot2**, **Hmisc**.
+
+This is the code for producing the violin plots of the posterior standard deviations across the different levels of sequencing coverage. 
+The figure in the manuscript is for 30 individuals and an allele frequency of 0.2 sampled from a hexaploid population. 
+The code can be sourced line the scripts for calculating error rates above, `source("coverage-sd.R")`, or run via the command line:
+
+```
+R CMD batch coverage-sd.R
+```
 
 ## pbs_scripts/
 

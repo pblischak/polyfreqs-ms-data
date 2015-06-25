@@ -24,8 +24,7 @@ cov_plot <- ggplot(cov_df, aes(x=cov, y=sd))
 			+ ggtitle("Effect of coverage on posterior standard deviation")
 			
 			
-new_cov_plot <- cov_plot 
-				+ theme_grey(base_size=14) 
+new_cov_plot <- cov_plot + theme_grey(base_size=14) 
 				+ theme(axis.title.x = element_blank()) 
 				+ ylab("Standard deviation") + scale_x_discrete(limits=c("c5","c10","c20","c50","c100")) 
 				+ stat_summary(fun.data="mean_sdl", mult=1, geom="pointrange", width=0.2, color="grey20") 
