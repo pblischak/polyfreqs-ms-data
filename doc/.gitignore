@@ -1,6 +1,5 @@
 .DS_Store
 *~
 Makefile
-*.eps
 *.pdf
 fig/*.pdf
