@@ -1,7 +1,7 @@
 .Rhistory
 .Rproj.user
 *~
-*.out
+./*.out
 polyfreqs.R
 polyfreqs.sh
 calc-stats.R
