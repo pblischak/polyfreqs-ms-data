@@ -115,13 +115,7 @@ In this paper we describe a model that aims to address the problems associated w
 \subsection*{Model setup}
 \medskip
 
-Here we consider a sample of $N$ individuals from a single population of ploidy level $\psi$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of high throughput sequencing reads mapping to each locus for each individual: \rmat{} and \tmat. The $N \times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N \times L$ matrix containing the number of sampled reads with the reference allele at each locus for each individual. Assuming conditional independence of the sequencing reads given genotypes, the probability distribution for sequencing reads can be factored as
-
-\begin{equation}\label{factored_lik}
-P(\bm{R}|\bm{T},\bm{G}, \epsilon) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell}, \epsilon)\,.
-\end{equation}
-
-\noindent Then for an individual, $i$, at locus $\ell$, we model the number of sequencing reads containing the reference allele ($r_{i\ell}$) as a Binomial random variable conditional on the total number of sequencing reads ($t_{i\ell} $), the underlying genotype ($g_{i\ell}$) and a constant level of sequencing error ($\epsilon$)
+Here we consider a sample of $N$ individuals from a single population of ploidy level $\psi$ sequenced at $L$ unlinked SNPs. The data for the model consist of two matrices containing counts of high throughput sequencing reads mapping to each locus for each individual: \rmat{} and \tmat. The $N \times L$ matrix \tmat{} contains the total number of reads sampled at each locus for each individual. Similarly, \rmat{} is an $N \times L$ matrix containing the number of sampled reads with the reference allele at each locus for each individual. Then for individual $i$ at locus $\ell$, we model the number of sequencing reads containing the reference allele ($r_{i\ell}$) as a Binomial random variable conditional on the total number of sequencing reads ($t_{i\ell} $), the underlying genotype ($g_{i\ell}$) and a constant level of sequencing error ($\epsilon$)
 
 \begin{equation}\label{likelihood}
 P(r_{i \ell}|t_{i\ell}, g_{i \ell},\epsilon) = \binom{t_{i \ell}}{r_{i \ell}}
@@ -132,20 +126,28 @@ P(r_{i \ell}|t_{i\ell}, g_{i \ell},\epsilon) = \binom{t_{i \ell}}{r_{i \ell}}
 	\end{cases}
 \end{equation}
 
+\noindent If we assume conditional independence of the sequencing reads given the genotypes, the joint probability distribution for sequencing reads is given by
+
+\begin{equation}\label{factored_lik}
+P(\bm{R}|\bm{T},\bm{G}, \epsilon) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(r_{i \ell}|t_{i \ell},g_{i \ell}, \epsilon)\,.
+\end{equation}
+
 \noindent Since the $r_{i \ell}$'s are the data that we observe, the product of $P(r_{i \ell}|t_{i\ell}, g_{i \ell},\epsilon)$ across loci and individuals will form the likelihood in the model. An important consideration here is that when $g_{i \ell}$ is equal to 0 or $\psi$ (i.e., when the genotype is homozygous) but the sequence data collected for the individual contains both alleles, the likelihood will be 0. To correct for this, we include error ($\epsilon$) into the model. The intuition behind including error is that reads sampled from a locus that is truly homozygous can still contain more than one allele due to sequencing errors, giving the false impression that the individual may be a partial heterozygote. If we assume that the probability of a sequencing error is smaller than the probability of being truly heterozygous (i.e., containing at least one reference allele in the genotype), then the probability model we use for reference reads should be able to distinguish between homozygotes with reads containing sequencing errors and partial heterozygotes. When we do this, the probability distribution for $r_{i\ell}$ given $g_{i\ell}$ and $\epsilon$ is split into $\psi+1$ cases as above in Eq. \ref{likelihood}.
 \medskip
 
-The next level in the hierarchy is the conditional prior for genotypes. We assume that the genotypes of the sampled individuals are conditionally independent given the allele frequencies ($\bm{p}$), which is equivalent to taking a random sample from a population in Hardy-Weinberg equilibrium. Factoring the distribution for genotypes and taking the product across loci and individuals gives us the joint probability distribution of genotypes given the ploidy level of the population and the allele frequencies at each locus ($p_{\ell}$):
+The next level in the hierarchy is the conditional prior for genotypes. We model each $g_{i \ell}$ as a Binomial random variable conditional on the ploidy level of the population and the frequency of the reference allele for locus $\ell$ ($p_{\ell}$):
+
+\begin{equation*}
+P(g_{i \ell}|\psi,p_{\ell}) = \binom{\psi}{g_{i \ell}}\,p_{\ell}^{g_{i \ell}}(1-p_{\ell})^{\psi-g_{i \ell}}\,.
+\end{equation*}
+
+\noindent We also assume that the genotypes of the sampled individuals are conditionally independent given the allele frequencies, which is equivalent to taking a random sample from a population in Hardy-Weinberg equilibrium. Factoring the distribution for genotypes and taking the product across loci and individuals gives us the joint probability distribution of genotypes given the ploidy level of the population and the allele frequencies at each locus ($\bm{p}$):
 
 \begin{equation}\label{condl_prior}
 P(\bm{G}|\psi, \bm{p}) = \displaystyle\prod_{\ell=1}^L\displaystyle\prod_{i=1}^N P(g_{i \ell}|\psi, p_{\ell})\,.
 \end{equation}
 
-\noindent We model each $g_{i \ell}$ as a Binomial random variable conditional on the ploidy level of the population and the frequency of the reference allele for locus $\ell$:
-
-\begin{equation*}
-P(g_{i \ell}|\psi,p_{\ell}) = \binom{\psi}{g_{i \ell}}\,p_{\ell}^{g_{i \ell}}(1-p_{\ell})^{\psi-g_{i \ell}}\,.
-\end{equation*}
+\noindent 
 
 The final level of the model is the prior distribution on allele frequencies. Assuming \textit{a priori} independence across loci, we use a Beta distribution with parameters $\alpha$ and $\beta$ both equal to $1$ as our prior distribution for each locus. A Beta(1,1) is equivalent to a Uniform distribution over the interval $[0,1]$, making our choice of prior uninformative. The joint posterior distribution of allele frequencies and genotypes is then equal to the product across all loci and all individuals of the likelihood, the conditional prior on genotypes and the prior distribution on allele frequencies up to a constant of proportionality
 
@@ -203,7 +205,7 @@ We begin our Gibbs sampling algorithm in a random position in parameter space th
 Simulations were performed to assess error rates in allele frequency estimation for tetraploid and hexaploid populations ($\psi$ = 4 and 6, respectively). Data were generated under the model by sampling genotypes from a binomial distribution conditional on a fixed, known allele frequency $(\,p_{\ell} = 0.01, 0.05, 0.1, 0.2, 0.4)$. Total read counts were simulated for a single locus using a Poisson distribution with mean coverage equal to 5, 10, 20, 50 or 100 reads per individual. We then sampled the number of sequencing reads containing the reference allele from a binomial distribution conditional on the number of total reads, the genotype and sequencing error (Eq. \ref{likelihood}; $\epsilon$ fixed to 0.01). Finally, we varied the number of individuals sampled per population $(N = 5, 10, 20, 30)$ and ran all possible combinations of the simulation settings. Each combination of sequencing coverage, individuals sampled and allele frequency was analyzed using 100 replicates for both tetraploid and hexaploid populations for a total of  20,000 simulation runs. MCMC analyses using Gibbs sampling were run for 100,000 generations with parameter values stored every 100 samples. The first 25\% of the posterior was discarded as burn-in, resulting in 750 posterior samples for each replicate. Convergence on the stationary distribution, $P(\,\bm{p},\bm{G}|\bm{R},\epsilon)$, was assessed by examining trace plots for a subset of runs for each combination of settings and ensuring that the effective sample sizes (ESS) were greater than 200. Deviations from the known underlying allele frequency used to simulate each data set were assessed by calculating the posterior mean of each replicate, followed by subtracting the known value from the calculated means and then calculating their overall standard deviation.
 \medskip
 
-All simulations were performed using the R statistical package \citep{r2014} on the Oakley cluster at the Ohio Supercomputer Center (\url{https://osc.edu}). Figures were generated using the R packages \textsc{ggplot2} \citep{wickham2009ggplot2}, \textsc{reshape} \citep{wickham2011plyr} and \textsc{plyr} \citep{wickham2007reshape} with additional figure manipulation completed using Inkscape (\url{https://inkscape.org}). MCMC diagnostics were done using the \textsc{coda} package \citep{plummer2006coda}.
+All simulations were performed using the R statistical package \citep{r2014} on the Oakley cluster at the Ohio Supercomputer Center (\url{https://osc.edu}). Figures were generated using the R packages \textsc{ggplot2} \citep{wickham2009ggplot2}, \textsc{reshape} \citep{wickham2011plyr} and \textsc{plyr} \citep{wickham2007reshape} with additional figure manipulation completed using Inkscape (\url{https://inkscape.org}). MCMC diagnostics were done using the \textsc{coda} package \citep{plummer2006coda}. All code is available on GitHub (\url{https://github.com/pblischak/polyfreqs-ms-data}).
 \medskip
 
 %%%%%%%%%%%%%%%
