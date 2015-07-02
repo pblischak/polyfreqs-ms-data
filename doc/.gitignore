@@ -2,5 +2,6 @@
 *~
 Makefile
 *.pdf
-fig/*.pdf
+!fig/*.pdf
 pdfs
+eps_fig
