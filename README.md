@@ -3,7 +3,6 @@
 This is the GitHub repository for all scripts and data used in our simulation study to test **polyfreqs**.
 
 **polyfreqs** is an R package implementing a Gibbs sampler for estimating biallelic SNP frequencies in a population of polyploids. 
-See Blischak *et al*. (2015) for more details on the model.
 
 ## Getting the scripts
 

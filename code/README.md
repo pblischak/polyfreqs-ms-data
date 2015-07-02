@@ -1,6 +1,6 @@
 # `code/`
 
-This folder contains scripts for running the simulations conducted in Blischak et al. (2015). 
+This folder contains scripts for running the simulations conducted in Blischak et al. (Accounting for genotype uncertainty...). 
 They include scripts for writing PBS batch files for submission to the Ohio Supercomputer, the scripts for running **polyfreqs** and for analyzing the output. 
 A more detailed description of each file is below.
 

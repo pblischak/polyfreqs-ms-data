@@ -11,4 +11,4 @@ so an appropriate LaTeX distribution will need to be installed (we used <a href=
 
 Blischak, P. D., L. S. Kubatko and A. D. Wolfe. 2015.
 Accounting for genotype uncertainty in the estimation of allele frequencies in autopolyploids.
-*Submitted*.
+*Submitted*. bioRxiv, **doi**: http://dx.doi.org/10.1101/021907.
