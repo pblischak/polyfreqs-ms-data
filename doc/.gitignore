@@ -1,6 +1,5 @@
 .DS_Store
 *~
-Makefile
 *.pdf
 !fig/*.pdf
 pdfs
