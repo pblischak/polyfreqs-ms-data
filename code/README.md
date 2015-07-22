@@ -75,8 +75,8 @@ traceplot(p_mcmc)
 Running each script can be done by either sourcing them in an R session (e.g., `source("calc-tetra-stats.R")`) or running them using the command line:
 
 ```
-R CMD batch calc-tetra-stats.R
-R CMD batch calc-hex-stats.R
+Rscript calc-tetra-stats.R
+Rscript calc-hex-stats.R
 ```
 
 ## coverage-sd.R
@@ -88,7 +88,7 @@ The figure in the manuscript is for 30 individuals and an allele frequency of 0.
 The code can be sourced line the scripts for calculating error rates above, `source("coverage-sd.R")`, or run via the command line:
 
 ```
-R CMD batch coverage-sd.R
+Rscript coverage-sd.R
 ```
 
 ## pbs_scripts/
