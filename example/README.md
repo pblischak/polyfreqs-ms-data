@@ -2,9 +2,6 @@
 
 This example contains two datasets for simulated populations of autotetraploids.
 
-```
-git clone https://github.com/pblischak/polyfreqs-ms-data.git
-```
 
 ## The data files
 
@@ -15,7 +12,6 @@ Each of these files contains either the total number of sequencing reads for eac
 - **tot_reads_pop2.txt**
 - **ref_reads_pop2.txt**
 
-All of these files can be downloaded from fig**share**: <a href="http://dx.doi.org/10.6084/m9.figshare.1514996" target="_blank">http://dx.doi.org/10.6084/m9.figshare.1514996</a>.
 
 ### Reference
 
