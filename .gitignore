@@ -18,3 +18,5 @@ misc
 data
 doc/*.eps
 doc/references.bib
+example/.Rhistory
+example/.RData
