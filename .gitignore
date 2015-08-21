@@ -20,3 +20,5 @@ doc/*.eps
 doc/references.bib
 example/.Rhistory
 example/.RData
+example/example-analyses.log
+example/example-analyses.synctex.gz
