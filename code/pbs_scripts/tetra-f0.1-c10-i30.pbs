@@ -13,3 +13,5 @@ module load R
 bash run_polyfreqs.sh -i 30 -c 10 -f 0.1 -m tetra-f0.1-c10-i30-mcmc.out -p 4
 
 mv tetra-f0.1-c10-i30-mcmc.out $HOME/code/sim_data/
+mv tot-* $HOME/code/raw_data/
+mv ref-* $HOME/code/raw_data/

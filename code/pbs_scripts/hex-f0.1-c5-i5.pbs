@@ -13,3 +13,5 @@ module load R
 bash run_polyfreqs.sh -i 5 -c 5 -f 0.1 -m hex-f0.1-c5-i5-mcmc.out -p 6
 
 mv hex-f0.1-c5-i5-mcmc.out $HOME/code/sim_data/
+mv tot-* $HOME/code/raw_data/
+mv ref-* $HOME/code/raw_data/
