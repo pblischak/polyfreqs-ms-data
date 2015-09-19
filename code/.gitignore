@@ -10,3 +10,7 @@ calc-stats.R
 *.svg
 tetra-means-df.txt
 hex-means-df.txt
+old_sim_data*
+*.zip
+*.pdf
+old_scripts

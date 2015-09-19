@@ -1,7 +1,8 @@
 # `code/`
 
-This folder contains scripts for running the simulations conducted in Blischak et al. (Accounting for genotype uncertainty...). 
-They include scripts for writing PBS batch files for submission to the Ohio Supercomputer, the scripts for running **polyfreqs** and for analyzing the output. 
+This folder contains scripts for running the simulations that were conducted for the paper. 
+They include scripts for writing PBS batch files for submission to the Ohio Supercomputer, the scripts for running **polyfreqs** and for analyzing the output and 
+scripts for generating figures. 
 A more detailed description of each file is below.
 
 --------
@@ -10,8 +11,8 @@ A more detailed description of each file is below.
 
 `write_polyfreqs_pbs.py` is a simple python script for writing PBS style submission files for batch processing on high-powered computing (HPC) environments. 
 The Ohio Supercomputer uses PBS with the qsub system but other systems may use a different type of submission format. 
-The script writes all of the PBS files (.pbs in the `pbs_scripts/` folder) for the tetraploid and hexaploid simulations and also writes two bash scripts for submitting all of the jobs: 
-`qsub_polyfreqs_tetra.sh` and `qsub_polyfreqs_hex.sh`.
+The script writes all of the PBS files (.pbs in the `pbs_scripts/` folder) for the tetraploid, hexaploid and octoploid simulations and also writes three bash scripts for submitting all of the jobs: 
+`qsub_polyfreqs_tetra.sh`, `qsub_polyfreqs_hex.sh` and `qsub_polyfreqs_octo.sh`.
 
 It can be run using the following command:
 
@@ -50,51 +51,34 @@ Rscript run_polyfreqs.R 20 20 0.2 mcmc.out 4
 ```
 
 
-## calc-tetra-stats.R and calc-hex-stats.R
+## R scripts for figures
 
-R packages needed: **ggplot2**, **reshape**, **plyr**, **coda**.
+R packages needed: **polyfreqs**, **ggplot2**, **reshape**, **coda**, **Hmisc**.
 
-This is the code for calculating the error rates for the simulation study presented in the manuscript. 
-It also produces the heat maps using **ggplot2** (with the help of **reshape** and **plyr**). 
-A lot of the code for the plots is based on this <a href="https://learnr.wordpress.com/2010/01/26/ggplot2-quick-heatmap-plotting/" target="_blank">blog post</a>. 
-MCMC diagnostics are also run using the **coda** package, looking mostly at the effective sample sizes for the allele frequency estimates at each locus. 
-Traceplots can be generated using the following snippet of code:
+These are the scripts for generating all of the figures in the manuscript and supplemental material. 
+The R packages listed above need to be installed in order to run them. 
 
-```r
-library(coda)
-p_table <- read.table("sim_data/hex-f0.01-c10-i10-mcmc.out", header=T, row.names=1)
-p_mcmc <- mcmc(p_table, start=100, end=100000, thin=100)
-
-# Flip through traceplots by pushing enter (there will be 100)
-par(ask=T)
-traceplot(p_mcmc)
-
-# Make sure you reset the `ask` parameter if you are going to keep plotting other things: `par(ask=F)`.
-```
-
-Running each script can be done by either sourcing them in an R session (e.g., `source("calc-tetra-stats.R")`) or running them using the command line:
+Running each script can be done by either sourcing them in an R session (e.g., `source("figure1.R")`) or running them using the command line:
 
 ```
-Rscript calc-tetra-stats.R
-Rscript calc-hex-stats.R
+Rscript figure1.R
 ```
 
-## coverage-sd.R
-
-R packages needed: **ggplot2**, **Hmisc**.
-
-This is the code for producing the violin plots of the posterior standard deviations across the different levels of sequencing coverage. 
-The figure in the manuscript is for 30 individuals and an allele frequency of 0.2 sampled from a hexaploid population. 
-The code can be sourced line the scripts for calculating error rates above, `source("coverage-sd.R")`, or run via the command line:
+We have also written a bash script, `make_figures.sh` which will make all of the figures for you automatically. 
+It can be run in a terminal as follows:
 
 ```
-Rscript coverage-sd.R
+bash make_figures.sh
 ```
 
 ## pbs_scripts/
 
-A folder containing all of the PBS files used for submitting jobs to the Ohio Supercomputer (there are 200).
+A folder containing all of the PBS files used for submitting jobs to the Ohio Supercomputer (300 files).
 
 ## sim_data/
 
-The results of the MCMC analyses run using **polyfreqs** which are analyzed using the `calc-*-stats.R` scripts.
+The results of the MCMC analyses run using **polyfreqs** (300 files).
+
+## raw_data/
+
+All of the raw simulated data sets and the data set for autotetraploid potato are in this folder (602 files).
