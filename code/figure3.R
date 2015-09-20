@@ -27,10 +27,10 @@ het_df <- data.frame(heterozygosity=rep(c("obs", "exp"), each=750),
                      value=c(multi_het_obs, multi_het_exp))
 
 # Make plot using ggplot
-het_plot_tmp <- ggplot(het_df, aes(x=value, color=heterozygosity, fill=heterozygosity)) + geom_density() + scale_fill_grey() + scale_color_grey() + theme_bw(base_size=18)
-het_plot <- het_plot_tmp + theme(axis.title.x=element_blank()) + ggtitle("Observed vs. Expected Heterozygosity") + guides(color=NULL) + xlim(0.37, 0.39)
+het_plot_tmp <- ggplot(het_df, aes(x=value, color=heterozygosity, fill=heterozygosity)) + geom_density() + scale_fill_grey() + scale_color_grey() + theme_bw(base_size=16)
+het_plot <- het_plot_tmp + ggtitle("Observed vs. Expected Heterozygosity") + theme(axis.title.x=element_blank(), plot.title = element_text(vjust=1))  + guides(color=NULL) + xlim(0.37, 0.39)
 print(het_plot)
 
 # Save plot as SVG and PDF
-ggsave("fig3.svg", het_plot)
-ggsave("fig3.pdf", het_plot)
+ggsave("fig3.svg", het_plot, width=80, height=60, units="mm", scale=2)
+ggsave("fig3.pdf", het_plot, width=80, height=60, units="mm", scale=2)
