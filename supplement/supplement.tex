@@ -23,7 +23,7 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage[top=3cm,bottom=3cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -96,8 +96,10 @@
         \renewcommand{\thefigure}{S\arabic{figure}}%
      }
 
-
 \begin{document}
+
+\maketitle
+
 
 \section{\texorpdfstring{Example analyses of autotetraploid potato
 (\emph{Solanum
@@ -162,6 +164,8 @@ following sections are intended to be completed with the data in the
 \KeywordTok{write.table}\NormalTok{(potato_mat_tot, }\DataTypeTok{file=}\StringTok{"potato_tot_reads.txt"}\NormalTok{, }\DataTypeTok{quote=}\NormalTok{F, }\DataTypeTok{sep=}\StringTok{"}\CharTok{\textbackslash{}t}\StringTok{"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\newpage
 
 If you look at the files that we just wrote
 (\texttt{potato\_ref\_reads.txt} and \texttt{potato\_tot\_reads.txt}),
@@ -267,6 +271,39 @@ understand the difference between them.
 \NormalTok{multi_het_obs <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(het_obs[}\DecValTok{251}\NormalTok{:}\DecValTok{1000}\NormalTok{,], }\DecValTok{1}\NormalTok{, mean, }\DataTypeTok{na.rm=}\NormalTok{T)}
 \NormalTok{multi_het_exp <-}\StringTok{ }\KeywordTok{apply}\NormalTok{(het_exp[}\DecValTok{251}\NormalTok{:}\DecValTok{1000}\NormalTok{,], }\DecValTok{1}\NormalTok{, mean, }\DataTypeTok{na.rm=}\NormalTok{T)}
 
+\CommentTok{# Check for convergence}
+\KeywordTok{library}\NormalTok{(coda)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: lattice
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{effectiveSize}\NormalTok{(}\KeywordTok{mcmc}\NormalTok{(multi_het_obs))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     var1 
+## 920.8956
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{effectiveSize}\NormalTok{(}\KeywordTok{mcmc}\NormalTok{(multi_het_exp))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## var1 
+##  750
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# Plot a simple set of histograms to see the difference (Figure 3 in MS).}
 \CommentTok{# The histograms will look slightly different but this is just a quick view.}
 \CommentTok{# The reason is because the spreads are very different, which affects bin size.}
@@ -335,7 +372,25 @@ each locus.
 \CommentTok{# Take burn-in}
 \NormalTok{potato_post <-}\StringTok{ }\NormalTok{potato_mcmc_table[}\DecValTok{251}\NormalTok{:}\DecValTok{1000}\NormalTok{,]}
 
+\CommentTok{# Check for convergence}
+\KeywordTok{sum}\NormalTok{(}\KeywordTok{effectiveSize}\NormalTok{(}\KeywordTok{mcmc}\NormalTok{(potato_post)) <}\StringTok{ }\DecValTok{200}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{mcmc}\NormalTok{(potato_post[,}\DecValTok{4}\NormalTok{]))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{supplement_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{# Run the analysis using the polyfreqs_pps() function.}
 \NormalTok{potato_pps <-}\StringTok{ }\KeywordTok{polyfreqs_pps}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(potato_post), }
                             \KeywordTok{as.matrix}\NormalTok{(potato_tot_table), }
@@ -370,10 +425,10 @@ inadequate loci.
 
 \begin{verbatim}
 ## $adequate
-## [1] 0.8671875
+## [1] 0.8697917
 ## 
 ## $inadequate
-## [1] 0.1328125
+## [1] 0.1302083
 \end{verbatim}
 
 \begin{Shaded}
@@ -384,17 +439,16 @@ inadequate loci.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "PotSNP002" "PotSNP015" "PotSNP020" "PotSNP044" "PotSNP068"
-##  [6] "PotSNp071" "PotSNP080" "PotSNP104" "PotSNP138" "PotSNP140"
-## [11] "PotSNP145" "PotSNP154" "PotSNP183" "PotSNP193" "PotSNP213"
-## [16] "PotSNP225" "PotSNP236" "PotSNP238" "PotSNP245" "PotSNP247"
-## [21] "PotSNP249" "PotSNP254" "PotSNP258" "PotSNP259" "PotSNP262"
-## [26] "PotSNP267" "PotSNP268" "PotSNP275" "PotSNP277" "PotSNP286"
-## [31] "PotSNP287" "PotSNP289" "PotSNP299" "PotSNP300" "PotSNP310"
-## [36] "PotSNP311" "PotSNP313" "PotSNP327" "PotSNP329" "PotSNP331"
-## [41] "PotSNP335" "PotSNP339" "PotSNP360" "PotSNP367" "PotSNP368"
-## [46] "PotSNP369" "PotSNP372" "PotSNP373" "PotSNP377" "PotSNP383"
-## [51] "PotSNP384"
+##  [1] "PotSNP002" "PotSNP015" "PotSNP020" "PotSNP044" "PotSNp071"
+##  [6] "PotSNP080" "PotSNP104" "PotSNP138" "PotSNP140" "PotSNP154"
+## [11] "PotSNP183" "PotSNP193" "PotSNP213" "PotSNP225" "PotSNP236"
+## [16] "PotSNP238" "PotSNP245" "PotSNP247" "PotSNP249" "PotSNP252"
+## [21] "PotSNP254" "PotSNP258" "PotSNP259" "PotSNP262" "PotSNP267"
+## [26] "PotSNP268" "PotSNP275" "PotSNP277" "PotSNP286" "PotSNP287"
+## [31] "PotSNP289" "PotSNP299" "PotSNP300" "PotSNP310" "PotSNP311"
+## [36] "PotSNP313" "PotSNP327" "PotSNP329" "PotSNP331" "PotSNP335"
+## [41] "PotSNP339" "PotSNP360" "PotSNP367" "PotSNP368" "PotSNP369"
+## [46] "PotSNP372" "PotSNP373" "PotSNP377" "PotSNP383" "PotSNP384"
 \end{verbatim}
 
 \begin{Shaded}
@@ -434,6 +488,5 @@ get \textasciitilde{}13-14\% of loci fitting the model poorly.
 \includegraphics[width=0.6\textwidth]{pdf/figS3}
 \caption{Density plot of the difference between the posterior mean and simple allele frequency estimate in \textit{Solanum tuberosum} taken for all loci.}
 \end{figure}
-
 
 \end{document}
