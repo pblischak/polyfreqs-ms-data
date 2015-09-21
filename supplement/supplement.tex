@@ -207,7 +207,7 @@ function, make sure that they are converted to matrices using the
 \KeywordTok{library}\NormalTok{(polyfreqs)}
 
 \CommentTok{# Run through polyfreqs with genotypes=T}
-\CommentTok{# and geno_dir="./potato_genotypes/".}
+\CommentTok{# and geno_dir="potato_genotypes".}
 \CommentTok{# Make sure you use the as.matrix() command.}
 \NormalTok{potato_out <-}\StringTok{ }\KeywordTok{polyfreqs}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(potato_tot_table), }
                         \KeywordTok{as.matrix}\NormalTok{(potato_ref_table), }\DataTypeTok{ploidy=}\DecValTok{4}\NormalTok{, }\DataTypeTok{iter=}\DecValTok{100000}\NormalTok{, }
@@ -487,6 +487,12 @@ get \textasciitilde{}13-14\% of loci fitting the model poorly.
 \centering
 \includegraphics[width=0.6\textwidth]{pdf/figS3}
 \caption{Density plot of the difference between the posterior mean and simple allele frequency estimate in \textit{Solanum tuberosum} taken for all loci.}
+\end{figure}
+
+\begin{figure}[b]
+\centering
+\includegraphics[width=\textwidth]{pdf/figS4}
+\caption{10-fold increase in coverage doesn't change error much but increasing sample size does.}
 \end{figure}
 
 \end{document}
