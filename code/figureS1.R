@@ -84,14 +84,14 @@ for(p in c("tetra", "hex", "octo")){
 # Set up ordering of factors from smallest to largest
 # for individuals and coverage
 df2$coverage <- factor(df2$coverage, levels=c('c5','c10','c20','c50','c100'))
-df2$individuals <- factor(df2$individuals, levels=c('i30','i20','i10','i5'))
+df2$individuals <- factor(df2$individuals, levels=c('i5','i10','i20','i30'))
 df2$ploidy <- factor(df2$ploidy, levels=c('tetra','hex','octo'))
 
 # Plot as a scatteroplot based on frequency, color & shape by ploidy using bw-scale
-figS1 <- ggplot(df2, aes(x=frequency, y=RMSE)) + geom_point(aes(color=method), size=4, alpha=0.9, position=position_dodge(width=0.1)) + scale_color_hue(h.start=40)
+figS1 <- ggplot(df2, aes(x=coverage, y=RMSE)) + geom_point(aes(color=method), size=4, alpha=0.9, position=position_dodge(width=0.1)) + scale_color_hue(h.start=40)
 
 # Now plot as facets based on individuals versus coverage
-figS1_facet <- figS1 + facet_grid(individuals ~ coverage) + theme_bw(base_size=18) + theme(axis.title.x=element_blank())
+figS1_facet <- figS1 + facet_grid(individuals ~ frequency) + theme_bw(base_size=18) + theme(axis.title.x=element_blank())
 print(figS1_facet)
 
 # Save the plot as SVG/PDF (just change the file ending)

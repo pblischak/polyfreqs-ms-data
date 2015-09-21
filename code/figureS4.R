@@ -1,31 +1,30 @@
 ######################################################
-# Script for calculating root mean square error
-# for allele frequency estimation (Figure 1)
-######################################################
+# Figure S4
+#
+# Script for showing that the root mean squared error
+# decreases when the number of individuals increases
+# but isn't very different between a 10 fold increase
+# in sequencing coverage
+########################################################
 
 library(ggplot2)
-library(coda)
 
 # Set up data frame for storing the RMSE values
-df <- data.frame(ploidy=c(rep("tetra",100),rep("hex",100),rep("octo",100)),
-                 frequency=rep(c(rep("f0.01",20),rep("f0.05",20),rep("f0.1",20),rep("f0.2",20),rep("f0.4",20)),3),
-                 coverage=rep(c(rep("c5",4),rep("c10",4),rep("c20",4),rep("c50",4),rep("c100",4)),3),
-                 individuals=rep(c("i5","i10","i20","i30"),75),
-                 RMSE=rep(NA,300))
+df <- data.frame(ploidy=rep("octo",40),
+                 coverage=rep(c("c10","c100"), each=20),
+                 frequency=rep(c("f0.01", "f0.05","f0.1","f0.2","f0.4"),each=4),
+                 individuals=rep(c("i5","i10","i20","i30"),10),
+                 RMSE=rep(NA,40))
 
 # Gotta love the quadruple for loop...
-for(p in c("tetra", "hex", "octo")){
+for(p in "octo"){
   for(i in c("f0.01","f0.05","f0.1","f0.2","f0.4")){
-    for(j in c("c5","c10","c20","c50","c100")){
+    for(j in c("c10","c100")){
       for(k in c("i5","i10","i20","i30")){
         table<-read.table(paste("./sim_data/",p,"-",i,"-",j,"-",k,"-mcmc.out",sep=""),header=T,row.names=1)
         
         # Get samples after burn-in (251-1000)
         tab_mcmc<-mcmc(table[251:1000,])
-        
-        # Check that effective sample sizes are greater than 200
-        # ESS not the greatest indicator but there are 30,000 runs to check
-        cat(sum(effectiveSize(tab_mcmc) < 200),"\n")
         
         # Get the posterior means
         means<-apply(tab_mcmc, 2, mean)
@@ -57,17 +56,16 @@ for(p in c("tetra", "hex", "octo")){
 
 # Set up ordering of factors from smallest to largest
 # for individuals and coverage
-df$coverage <- factor(df$coverage, levels=c('c5','c10','c20','c50','c100'))
+df$coverage <- factor(df$coverage, levels=c('c10','c100'))
 df$individuals <- factor(df$individuals, levels=c('i5','i10','i20','i30'))
-df$ploidy <- factor(df$ploidy, levels=c('tetra','hex','octo'))
 
-# Plot as a scatteroplot based on frequency, color & shape by ploidy using bw-scale
-fig1 <- ggplot(df, aes(x=coverage, y=RMSE)) + geom_point(aes(color=ploidy, shape=ploidy), size=4, alpha=0.9, position=position_dodge(width=0.1)) + scale_color_grey()
+# Plot as lines based on indivuals, color and group by frequency
+figS4 <- ggplot(df, aes(x=individuals, y=RMSE, group=frequency)) + geom_line(aes(color=frequency), size=2) + guides(size="none")
 
 # Now plot as facets based on individuals versus coverage
-fig1_facet <- fig1 + facet_grid(individuals ~ frequency) + theme_bw(base_size=18) + theme(axis.title.x=element_blank())
-print(fig1_facet)
+figS4_facet <- figS4 + facet_grid(. ~ coverage) + theme_bw(base_size=18) + xlab("Number of individuals") + theme(axis.title.x=element_text(vjust=-0.25))
+print(figS4_facet)
 
 # Save the plot as SVG/PDF (just change the file ending)
-ggsave("fig1.svg", fig1_facet, height=120, width=169, units="mm", scale=2.5)
-ggsave("fig1.pdf", fig1_facet, height=120, width=169, units="mm", scale=2.5)
+ggsave("figS4.svg", figS4_facet, height=120, width=169, units="mm", scale=2.5)
+ggsave("figS4.pdf", figS4_facet, height=120, width=169, units="mm", scale=2.5)
