@@ -78,8 +78,20 @@
 \setlength{\emergencystretch}{3em}  % prevent overfull lines
 \setcounter{secnumdepth}{0}
 
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
 %%% Change title format to be more compact
 \usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
 \setlength{\droptitle}{-2em}
   \title{}
   \pretitle{\vspace{\droptitle}}
@@ -235,7 +247,8 @@ The \texttt{potato\_out} object will be a list of four items:
   samples of expected heterozygosity.
 \end{itemize}
 
-We will write each of these to file for downstream analyses.
+We will write each of these to file for downstream analyses (except for
+the \texttt{posterior\_freqs} which already has its own file).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -273,15 +286,6 @@ understand the difference between them.
 
 \CommentTok{# Check for convergence}
 \KeywordTok{library}\NormalTok{(coda)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: lattice
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{effectiveSize}\NormalTok{(}\KeywordTok{mcmc}\NormalTok{(multi_het_obs))}
 \end{Highlighting}
 \end{Shaded}
@@ -310,6 +314,10 @@ understand the difference between them.
 \KeywordTok{hist}\NormalTok{(multi_het_exp, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.37}\NormalTok{, }\FloatTok{0.39}\NormalTok{), }
      \DataTypeTok{main=}\StringTok{"Heterozygosity"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{)}
 \KeywordTok{hist}\NormalTok{(multi_het_obs, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{add=}\NormalTok{T)}
+\KeywordTok{legend}\NormalTok{(}\DataTypeTok{x=}\StringTok{"topright"}\NormalTok{, }
+       \KeywordTok{c}\NormalTok{(}\StringTok{"expected"}\NormalTok{,}\StringTok{"observed"}\NormalTok{), }
+       \DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{,}\StringTok{"red"}\NormalTok{), }
+       \DataTypeTok{fill=}\KeywordTok{c}\NormalTok{(}\StringTok{"blue"}\NormalTok{,}\StringTok{"red"}\NormalTok{), }\DataTypeTok{bty=}\StringTok{"n"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -344,7 +352,7 @@ understand the difference between them.
 
 As can be seen from the histograms and the summary statistics, the
 observed heterozygosity is higher than the expected heterozygosity,
-consistent with a pattern of inbreeding.
+consistent with a pattern of excess outbreeding.
 
 \subsection{\texorpdfstring{\emph{Evaluating model
 adequacy}}{Evaluating model adequacy}}\label{evaluating-model-adequacy}
@@ -425,10 +433,10 @@ inadequate loci.
 
 \begin{verbatim}
 ## $adequate
-## [1] 0.8697917
+## [1] 0.8723958
 ## 
 ## $inadequate
-## [1] 0.1302083
+## [1] 0.1276042
 \end{verbatim}
 
 \begin{Shaded}
@@ -439,16 +447,26 @@ inadequate loci.
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "PotSNP002" "PotSNP015" "PotSNP020" "PotSNP044" "PotSNp071"
-##  [6] "PotSNP080" "PotSNP104" "PotSNP138" "PotSNP140" "PotSNP154"
-## [11] "PotSNP183" "PotSNP193" "PotSNP213" "PotSNP225" "PotSNP236"
+##  [1] "PotSNP002" "PotSNP015" "PotSNP020" "PotSNP044" "PotSNP068"
+##  [6] "PotSNp071" "PotSNP080" "PotSNP104" "PotSNP138" "PotSNP140"
+## [11] "PotSNP154" "PotSNP183" "PotSNP193" "PotSNP213" "PotSNP225"
 ## [16] "PotSNP238" "PotSNP245" "PotSNP247" "PotSNP249" "PotSNP252"
 ## [21] "PotSNP254" "PotSNP258" "PotSNP259" "PotSNP262" "PotSNP267"
 ## [26] "PotSNP268" "PotSNP275" "PotSNP277" "PotSNP286" "PotSNP287"
 ## [31] "PotSNP289" "PotSNP299" "PotSNP300" "PotSNP310" "PotSNP311"
 ## [36] "PotSNP313" "PotSNP327" "PotSNP329" "PotSNP331" "PotSNP335"
 ## [41] "PotSNP339" "PotSNP360" "PotSNP367" "PotSNP368" "PotSNP369"
-## [46] "PotSNP372" "PotSNP373" "PotSNP377" "PotSNP383" "PotSNP384"
+## [46] "PotSNP372" "PotSNP373" "PotSNP383" "PotSNP384"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(potato_pps$locus_fit[potato_pps$locus_fit==}\OtherTok{FALSE}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 49
 \end{verbatim}
 
 \begin{Shaded}
@@ -456,6 +474,9 @@ inadequate loci.
 \CommentTok{# plot the posterior predictive distribution of read ratio differences.}
 \NormalTok{inadequate <-}\StringTok{ }\KeywordTok{names}\NormalTok{(potato_pps$locus_fit[potato_pps$locus_fit==}\OtherTok{FALSE}\NormalTok{])}
 \KeywordTok{hist}\NormalTok{(potato_pps$ratio_diff[,inadequate[}\DecValTok{1}\NormalTok{]], }\DataTypeTok{main=}\NormalTok{inadequate[}\DecValTok{1}\NormalTok{], }\DataTypeTok{xlab=}\StringTok{""}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{quantile}\NormalTok{(potato_pps$ratio_diff[,inadequate[}\DecValTok{1}\NormalTok{]],}\KeywordTok{c}\NormalTok{(}\FloatTok{0.025}\NormalTok{,}\FloatTok{0.975}\NormalTok{)),}
+       \DataTypeTok{col=}\StringTok{"blue"}\NormalTok{, }\DataTypeTok{lty=}\StringTok{"dashed"}\NormalTok{, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\DecValTok{0}\NormalTok{, }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
