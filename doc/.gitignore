@@ -6,3 +6,4 @@ pdfs
 eps_fig
 old_*
 eps
+!pdf/fig*
