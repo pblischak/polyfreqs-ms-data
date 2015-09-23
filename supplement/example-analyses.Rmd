@@ -1,0 +1,205 @@
+---
+output:
+  pdf_document:
+    keep_tex: true
+---
+
+# Example analyses of autotetraploid potato (*Solanum tuberosum*)
+
+The following walk-through will take you through every step of analyzing the data set for autotetraploid potato (*Solanum tuberosum*) that was completed in the manuscript. Because the analysis with \textsc{polyfreqs} takes a few hours (there are 86,400 parameters to estimate), we have provided the output from that step for you. The potato data set is provided for free with the R package \textsc{fitTetra}, and the code below goes through how we acquired and reformatted it for an analysis with \textsc{polyfreqs}. Instructions for installing \textsc{polyfreqs} can be found on the GitHub page associated with the package (\url{https://github.com/pblischak/polyfreqs}). The following sections are intended to be completed with the data in the `example/` folder accompanying the manuscript found on GitHub (\url{https://github.com/pblischak/polyfreqs-ms-data}).
+
+```{r, eval=FALSE}
+# Using autetraploid potato data from the fitTetra package.
+#
+# If not installed, install it using:
+# install.packages("fitTetra")
+#
+# Then load the data.
+library(fitTetra)
+data(tetra.potato.SNP)
+
+# Get the names of the individuals and loci.
+samples <- unique(tetra.potato.SNP$SampleName)
+markers <- unique(tetra.potato.SNP$MarkerName)
+
+# Initialize x and y matrices -- x will be the reference allele.
+potato_mat_x <- matrix(NA, nrow=length(unique(tetra.potato.SNP$SampleName)), 
+                       ncol=length(unique(tetra.potato.SNP$MarkerName)))
+rownames(potato_mat_x) <- samples
+colnames(potato_mat_x) <- markers
+
+potato_mat_y <- matrix(NA, nrow=length(unique(tetra.potato.SNP$SampleName)), 
+                       ncol=length(unique(tetra.potato.SNP$MarkerName)))
+
+# Get the counts from the data frame.
+for(i in 1:dim(potato_mat_x)[1]){
+    tmp <- subset(tetra.potato.SNP, SampleName==samples[i])
+    potato_mat_x[i,] <- tmp$X_Raw
+    potato_mat_y[i,] <- tmp$Y_Raw
+}
+
+# Get the total counts as the sum of x and y and give row and column names.
+potato_mat_tot <- potato_mat_x + potato_mat_y
+rownames(potato_mat_tot) <- samples
+colnames(potato_mat_tot) <- markers
+
+# Rescale, then print the tables to file in a format suitable for polyfreqs.
+
+potato_mat_x <- round(potato_mat_x/100)
+potato_mat_tot <- round(potato_mat_tot/100)
+
+write.table(potato_mat_x, file="potato_ref_reads.txt", quote=F, sep="\t")
+write.table(potato_mat_tot, file="potato_tot_reads.txt", quote=F, sep="\t")
+```
+
+\newpage
+
+If you look at the files that we just wrote (\texttt{potato\_ref\_reads.txt} and \texttt{potato\_tot\_reads.txt}), you can see how data should be formatted for running an analysis with \textsc{polyfreqs}. More details will be provided in the next section when we read in the data and analyze it.
+
+## *Calculating expected and observed heterozygosity*
+
+Next we will read the data into R. The simplest way to do this is to use the `read.table()` function. In the total and reference read count files for the potato data, the first row is a tab delimited list of locus names. This row is optional and can be excluded. After that, each row has the name of the individual followed by the read counts at each locus (tab delimited). The individual name is required because it is used when writing genotype samples to file (set `genotypes=T` when running \textsc{polyfreqs}). To specify that the first column contains the names, we use the `row.names` argument and set it equal to 1. To specify that the first row has column names for each locus (you don't need a label for the names), set the `header` argument to `TRUE`. With the data read in, all that is left to do is to load \textsc{polyfreqs} and set up an analysis. 
+
+> **NB**: When the data are passed to the `polyfreqs()` function, make sure that they are converted to matrices using the `as.matrix()` function.
+
+```{r, eval=FALSE}
+# Read in data using read.table. Remember the row.names and header options.
+# If you don't have locus names in the first row, take out header=T.
+potato_tot_table <- read.table("potato_tot_reads.txt", row.names=1, header=T)
+potato_ref_table <- read.table("potato_ref_reads.txt", row.names=1, header=T)
+
+# Load polyfreqs
+library(polyfreqs)
+
+# Run through polyfreqs with genotypes=T
+# and geno_dir="potato_genotypes".
+# Make sure you use the as.matrix() command.
+potato_out <- polyfreqs(as.matrix(potato_tot_table), 
+                        as.matrix(potato_ref_table), ploidy=4, iter=100000, 
+                        genotypes=T, geno_dir="potato_genotypes", 
+                        outfile="potato_mcmc.out")
+
+
+```
+
+The `potato_out` object will be a list of four items:
+
+- `potato_out$posterior_freqs` -- a matrix of the posterior samples of allele frequencies at each locus prior to burn-in (also printed to the file `potato_mcmc.out`).
+
+- `potato_out$map_genotypes` -- a matrix of the maximum *a posteriori* genotypes for each individual at each locus estimated using the posterior mode.
+
+- `potato_out$het_obs` -- a matrix of the per locus posterior samples of observed heterozygosity.
+
+- `potato_out$het_exp` -- a matrix of the per locus posterior samples of expected heterozygosity.
+
+We will write each of these to file for downstream analyses (except for the `posterior_freqs` which already has its own file).
+
+```{r, eval=FALSE}
+write.table(potato_out$map_genotypes, "potato_map_genotypes.txt", quote=F, 
+            row.names=F, col.names=F)
+write.table(potato_out$het_obs, "potato_het_obs.txt", quote=F, 
+            row.names=F, col.names=F)
+write.table(potato_out$het_exp, "potato_het_exp.txt", quote=F, 
+            row.names=F, col.names=F))
+```
+
+To evaluate the observed and expected heterozygosity, we will get multi-locus estimates by taking the mean across loci of the per locus posterior samples in the `het_obs` and `het_exp` matrices. We can then plot these and calculate summary statistics to understand the difference between them.
+
+```{r}
+# If you have the potato_out object in the workspace you can proceed
+# without reading in the files using the commands:
+#
+# het_obs <- potato_out$het_obs
+# het_exp <- potato_out$het_exp
+
+# We will read in the files and convert to matrices at the same time.
+het_obs <- as.matrix(read.table("potato_het_obs.txt"))
+het_exp <- as.matrix(read.table("potato_het_exp.txt"))
+
+# Get a multi-locus estimate by taking the mean across loci using the apply function.
+# Take 25% burn-in, only samples 251-1000 are used.
+multi_het_obs <- apply(het_obs[251:1000,], 1, mean, na.rm=T)
+multi_het_exp <- apply(het_exp[251:1000,], 1, mean, na.rm=T)
+
+# Check for convergence
+library(coda)
+effectiveSize(mcmc(multi_het_obs))
+effectiveSize(mcmc(multi_het_exp))
+
+# Plot a simple set of histograms to see the difference (Figure 3 in MS).
+# The histograms will look slightly different but this is just a quick view.
+# The reason is because the spreads are very different, which affects bin size.
+hist(multi_het_exp, col="blue", xlim=c(0.37, 0.39), 
+     main="Heterozygosity", xlab="")
+hist(multi_het_obs, col="red", add=T)
+legend(x="topright", 
+       c("expected","observed"), 
+       col=c("blue","red"), 
+       fill=c("blue","red"), bty="n")
+
+# Calculate summary stats (mean and 95% highest posterior density [HPD] interval)
+# with the quantile() function.
+list("mean_exp" = mean(multi_het_exp), 
+     "95HPD_exp" = quantile(multi_het_exp, c(0.025, 0.975)), 
+     "mean_obs" = mean(multi_het_obs), 
+     "95HPD_obs" = quantile(multi_het_obs, c(0.025, 0.975)))
+```
+
+As can be seen from the histograms and the summary statistics, the observed heterozygosity is higher than the expected heterozygosity, consistent with a pattern of excess outbreeding.
+
+## *Evaluating model adequacy*
+
+To evaluate model adequacy using posterior predictive simulation, we used the posterior distribution of allele frequencies from the \textsc{polyfreqs} run (`potato_mcmc.out`) minus burn-in to look at model fit on a per locus basis. You will also need the original read count data to compare the observed and predicted read count ratios for each locus.
+
+```{r}
+# Read in the original read cound data using read.table().
+# Again, remember the row.names and header arguments.
+potato_tot_table <- read.table("potato_tot_reads.txt", row.names=1, header=T)
+potato_ref_table <- read.table("potato_ref_reads.txt", row.names=1, header=T)
+
+# If you haven't done so, load polyfreqs.
+library(polyfreqs)
+
+# Now we'll read in the posterior distribution of allele frequencies.
+potato_mcmc_table <- read.table("potato_mcmc.out", row.names=1, header=T)
+
+# Take burn-in
+potato_post <- potato_mcmc_table[251:1000,]
+
+# Check for convergence
+sum(effectiveSize(mcmc(potato_post)) < 200)
+plot(mcmc(potato_post[,4]))
+
+# Run the analysis using the polyfreqs_pps() function.
+potato_pps <- polyfreqs_pps(as.matrix(potato_post), 
+                            as.matrix(potato_tot_table), 
+                            as.matrix(potato_ref_table), 
+                            ploidy=4, error=0.01)
+```
+
+The `potato_pps` object will be a list with two items:
+
+- `potato_pps$ratio_diff` -- A matrix with the per locus posterior predictive samples of the read ratio differences.
+
+- `potato_pps$locus_fit` -- A logical vector indicating whether each locus passed or failed the posterior predictive check.
+
+These two items can then be used to examine various aspects of model fit such as the proportion of adequate/inadequate loci and plotting the posterior predictive distribuion of read ratio differences for inadequate loci.
+
+```{r}
+# Get the proportion of adequate and inadequate loci.
+list("adequate" = mean(potato_pps$locus_fit), 
+     "inadequate" = 1 - mean(potato_pps$locus_fit))
+
+# Get the names of the loci that are inadequate (provided that locus names are given).
+names(potato_pps$locus_fit[potato_pps$locus_fit==FALSE])
+length(potato_pps$locus_fit[potato_pps$locus_fit==FALSE])
+
+# plot the posterior predictive distribution of read ratio differences.
+inadequate <- names(potato_pps$locus_fit[potato_pps$locus_fit==FALSE])
+hist(potato_pps$ratio_diff[,inadequate[1]], main=inadequate[1], xlab="")
+abline(v=quantile(potato_pps$ratio_diff[,inadequate[1]],c(0.025,0.975)),
+       col="blue", lty="dashed", lwd=2)
+abline(v=0, col="red")
+```
+
+The stochastic nature of simulating data may change the results between posterior predictive model checking runs slightly, but we consistently get ~13-14% of loci fitting the model poorly.

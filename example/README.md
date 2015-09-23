@@ -6,7 +6,7 @@ asses model adequacy. The data set was acquired from the R package fitTetra (Voo
 
 ## The data files
 
-These files contains the total number of sequencing reads for each individual at each locus and the number of reference alleles. 
+These 2 files contains the total number of sequencing reads for each individual at each locus and the number of reference reads. 
 They are the input data for running **polyfreqs**.
 
 - **potato_tot_reads.txt**
@@ -22,7 +22,7 @@ They are the files that are intended to be used for the example analysis present
 - **potato_het_obs.txt**: the posterior samples of per locus observed heterozygosity.
 - **potato_het_exp.txt**: the posterior samples of per locus expected heterozygosity.
 
-### Reference
+### References
 
 Blischak PD, LS Kubatko and AD Wolfe. Accounting for genotype uncertainty in the estimation of allele frequencies in autopolyploids. *In revision*. bioRxiv, doi: <a href="http://dx.doi.org/10.1101/021907" target="_blank">http://dx.doi.org/10.1101/021907</a>.
 
