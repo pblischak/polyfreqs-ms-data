@@ -123,12 +123,12 @@ was completed in the manuscript. Because the analysis with
 \textsc{polyfreqs} takes a few hours (there are 86,400 parameters to
 estimate), we have provided the output from that step for you. The
 potato data set is provided for free with the R package
-\textsc{fitTetra}, and the code below goes through how we acquired and
-reformatted it for an analysis with \textsc{polyfreqs}. Instructions for
+\textsc{fitTetra}, and the code below goes through how we acquired, formatted and
+rescaled it for an analysis with \textsc{polyfreqs}. Instructions for
 installing \textsc{polyfreqs} can be found on the GitHub page associated
-with the package (\url{https://github.com/pblischak/polyfreqs}). The
+with the package (\url{http://pblischak.github.io/polyfreqs}). The
 following sections are intended to be completed with the data in the
-\texttt{example/} folder accompanying the manuscript found on GitHub
+\texttt{example/} folder found in the GitHub repository accompanying the manuscript 
 (\url{https://github.com/pblischak/polyfreqs-ms-data}).
 
 \begin{Shaded}
@@ -179,7 +179,7 @@ following sections are intended to be completed with the data in the
 
 \newpage
 
-If you look at the files that we just wrote
+If you look at the files that were just made
 (\texttt{potato\_ref\_reads.txt} and \texttt{potato\_tot\_reads.txt}),
 you can see how data should be formatted for running an analysis with
 \textsc{polyfreqs}. More details will be provided in the next section
@@ -490,30 +490,30 @@ get \textasciitilde{}13-14\% of loci fitting the model poorly.
 
 \begin{figure}[b]
 \centering
+\caption{Comparison of posterior mean versus mean read ratio estimates of allele frequencies for all simulation settings. All panels are set up the same as in Figure 1.}
 \includegraphics[width=\textwidth]{pdf/figS1}
-\caption{Comparison of posterior mean versus simple mean read ratio estimates of allele frequencies for all simulation settings. All panels are set up the same as in Figure 1.}
 \end{figure}
 
 
 
 \begin{figure}[b]
 \centering
+\caption{Comparison of posterior mean versus mean read ratio estimates of allele frequencies for \textit{Solanum tuberosum}. We sorted the estimates from lowest to highest based on the posterior mean, which is why the read ratio estimates appear to be quite erratic. The same result is seen in the posterior mean estimates if the results are sorted by the read ratio estimate.}
 \includegraphics[width=\textwidth]{pdf/figS2}
-\caption{Comparison of posterior mean versus simple mean read ratio estimates of allele frequencies for \textit{Solanum tuberosum}. We sorted the estimates from lowest to highest based on the posterior mean, which is why the simple estimates appear to be quite stochastic. The same result is seen in the posterior mean estimates if the results are sorted by the simple estimate.}
 \end{figure}
 
 
 
 \begin{figure}[b]
 \centering
+\caption{Density plot of the difference between the mean read ratio (simple) and posterior mean estimates in \textit{Solanum tuberosum} taken for all loci. The distribution is centered around 0, demonstrating that on average there is no difference between the estimates.}
 \includegraphics[width=0.6\textwidth]{pdf/figS3}
-\caption{Density plot of the difference between the posterior mean and simple allele frequency estimate in \textit{Solanum tuberosum} taken for all loci.}
 \end{figure}
 
 \begin{figure}[b]
 \centering
+\caption{A close up comparison of the effect of coverage and the number of individuals sampled on estimation error for octopoloids. The two panels represent two levels of sequencing coverage (10x and 100x) and compare the RMSE across the different numbers of individuals sampled (5, 10, 20, 30) and the different allele frequencies used to simulate read counts (0.01, 0.05, 0.1, 0.2, 0.4) for the simulation study. The two panels show that error decreases more from an increase in the number of individuals sampled than from a 10-fold increase in sequencing coverage.}
 \includegraphics[width=\textwidth]{pdf/figS4}
-\caption{10-fold increase in coverage doesn't change error much but increasing sample size does.}
 \end{figure}
 
 \end{document}
