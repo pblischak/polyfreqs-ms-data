@@ -20,7 +20,7 @@
 \usepackage{datetime}
 \pagestyle{plain}
 \frenchspacing
-\doublespacing
+%\doublespacing
 \usepackage[table]{xcolor}
 \setcounter{secnumdepth}{0}
 
@@ -352,7 +352,7 @@ The authors would like to thank the Ohio Supercomputer Center for access to comp
 \bibliographystyle{MolEcol}
 \bibliography{refs}
 
-\doublespacing
+%\doublespacing
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Author Contributions}        %%
@@ -412,7 +412,7 @@ $\mathcal{H}_e, \mathcal{H}_o$ & Expected and observed heterozygosity.\\
 \centering
 \caption{Error in allele frequency estimation as measured by the RMSE of posterior means. Columns represent the different allele frequencies used to simulate read data (0.01, 0.05, 0.1, 0.2, 0.4), rows represent the number of individuals samples from the population (5, 10, 20, 30). Each individual plot shows the RMSE of the estimates for each ploidy level (tetra, hex, octo) across the different levels of coverage (5x, 10x, 20x, 50x 100x). The best scenario is in the bottom left with 30 individuals sampled and an allele frequency of 0.01. The worst scenario is in the upper right corner with 5 individuals sampled and an allele frequency of 0.4. Looking across rows shows that error increases as allele frequencies get closer to 0.5. Looking up and down columns shows that error increases as the number of individuals decreases. Within each plot, increasing sequence coverage does not have as large of an effect on error, and differences in ploidy show that error decreases as ploidy increases.}
 \vspace{0.25in}
-\includegraphics{eps/fig1}
+\includegraphics{pdf/fig1}
 \label{fig1:rmse}
 \end{figure}
 
@@ -420,7 +420,7 @@ $\mathcal{H}_e, \mathcal{H}_o$ & Expected and observed heterozygosity.\\
 \centering
 \caption{The posterior standard deviation for allele frequencies decreases compared across levels of sequencing coverage. This plot provides a comparison of the distribution of the posterior standard deviations of the 100 replicates performed for each level of sequencing coverage (5x, 10x, 20x, 50x, 100x) for the hexaploid simulation with 30 individuals sampled from the population and an allele frequency of 0.2.}
 \vspace{0.25in}
-\includegraphics{eps/fig2}
+\includegraphics{pdf/fig2}
 \label{fig2:coverage-sd}
 \end{figure}
 
@@ -429,7 +429,7 @@ $\mathcal{H}_e, \mathcal{H}_o$ & Expected and observed heterozygosity.\\
 \centering
 \caption{Posterior distributions of the multi-locus estimates of expected and observed heterozygosity in \textit{Solanum tuberosum}. The observed heterozygosity is higher than the expected, consistent with a pattern of excess outbreeding.}
 \vspace{0.25in}
-\includegraphics{eps/fig3}
+\includegraphics{pdf/fig3}
 \label{fig3:het}
 \end{figure}
 

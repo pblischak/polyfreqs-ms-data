@@ -1,8 +1,8 @@
 # **polyfreqs-ms-data**: scripts and data for polyfreqs manuscript
 
-This is the GitHub repository for all scripts and data used in our simulation study to test **polyfreqs**.
+This is the GitHub repository for all the scripts, data, figures, example files and supplemental material used in our manuscript.
 
-**polyfreqs** is an R package implementing a Gibbs sampler for estimating biallelic SNP frequencies in a population of polyploids. 
+**polyfreqs** is an R package implementing a Gibbs sampler for estimating biallelic SNP frequencies, genotypes and heterozygosity in autopolyploids. 
 
 ## Getting the scripts
 
@@ -12,18 +12,23 @@ These scripts can be obtained by cloning this git repository using the command:
 git clone https://github.com/pblischak/polyfreqs-ms-data.git
 ```
 
-## `doc/`
-
-The `doc/` folder contains all of the files associated with the manuscript for the **polyfreqs** model, 
-including the TeX source file.
-
 ## `code/`
 
 This directory has all of the scripts for simulating and analyzing the data in the manuscript.
 
-## `fig/`
+## `doc/`
 
-Contains all of the figures for the manuscript prior to manipulation in <a href="https://inkscape.org" target="_blank">Inkscape</a>.
+The `doc/` folder contains all of the files associated with the manuscript for the **polyfreqs** model, 
+including the LaTeX source file.
+
+## `example/`
+
+The `example/` folder has the data set for *Solanum tuberosum* that we used in the paper and the output from each analysis that we did. 
+These are the files that are intended to be used with the walk through provided in the Supplemental Material.
+
+## `supplement/`
+
+This folder contains LaTeX the source code for generating the Supplemental Materials document for the manuscript.
 
 --------
 
