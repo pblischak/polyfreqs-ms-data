@@ -24,7 +24,7 @@ for(p in "octo"){
         table<-read.table(paste("./sim_data/",p,"-",i,"-",j,"-",k,"-mcmc.out",sep=""),header=T,row.names=1)
         
         # Get samples after burn-in (251-1000)
-        tab_mcmc<-mcmc(table[251:1000,])
+        tab_mcmc<-table[251:1000,]
         
         # Get the posterior means
         means<-apply(tab_mcmc, 2, mean)
