@@ -28,7 +28,7 @@ These are the files that are intended to be used with the walk through provided 
 
 ## `supplement/`
 
-This folder contains LaTeX the source code for generating the Supplemental Materials document for the manuscript.
+This folder contains the LaTeX source code for generating the Supplemental Materials document for the manuscript.
 
 --------
 
