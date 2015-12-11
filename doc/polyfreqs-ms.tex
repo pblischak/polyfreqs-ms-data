@@ -180,9 +180,10 @@ p_{\ell}\,|\,g_{i \ell},r_{i \ell},\epsilon \: \sim \: \text{Beta}\left(\alpha= 
 
 The full conditional distribution for genotypes is a discrete categorical distribution over the possible values for the genotypes $(0,\ldots,\psi)$. The distribution for individual $i$ at locus $\ell$ is
 
-\begin{equation}\label{G-full}
-P(g_{i \ell}|g_{(\text{-}i) \ell},p_{\ell},r_{i \ell},\epsilon) = \binom{t_{i\ell}}{r_{i\ell}} g_\epsilon^{r_{i \ell}}(1-g_\epsilon)^{t_{i \ell}-r_{i \ell}}\displaystyle\binom{\psi}{g_{i \ell}}p_{\ell}^{\,g_{i \ell}}\,(1-p_{\ell})^{\psi-g_{i \ell}}\,,
-\end{equation}
+\begin{align}\label{G-full}
+P(g_{i \ell}|g_{(\text{-}i) \ell},p_{\ell},r_{i \ell},\epsilon) =  &\binom{t_{i\ell}}{r_{i\ell}} g_\epsilon^{r_{i \ell}}(1-g_\epsilon)^{t_{i \ell}-r_{i \ell}} \nonumber \\[0.05in]
+&\quad \times \binom{\psi}{g_{i \ell}}p_{\ell}^{\,g_{i \ell}}\,(1-p_{\ell})^{\psi-g_{i \ell}}\,,
+\end{align}
 
 \noindent where $g_{(\text{-}i) \ell}$ is the value of the genotypes for all sampled individuals excluding individual $i$ and $g_\epsilon$ is the same as Eq. \ref{g_error}. The full conditional distribution for genotypes can be seen as the product of two quantities: (1) the probability of each of the possible genotypes based on the observed  reference reads and (2) the probability of drawing each genotype given the allele frequency for that locus in the population.
 \medskip  

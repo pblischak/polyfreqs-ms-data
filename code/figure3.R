@@ -23,12 +23,12 @@ multi_het_obs <- apply(het_obs, 1, mean, na.rm=T)
 multi_het_exp <- apply(het_exp, 1, mean, na.rm=T)
 
 # Make the data frame for storing the heterozygosity estimates
-het_df <- data.frame(heterozygosity=rep(c("obs", "exp"), each=750),
+het_df <- data.frame(Heterozygosity=rep(c("obs", "exp"), each=750),
                      value=c(multi_het_obs, multi_het_exp))
 
 # Make plot using ggplot
-het_plot_tmp <- ggplot(het_df, aes(x=value, color=heterozygosity, fill=heterozygosity)) + geom_density() + scale_fill_grey() + scale_color_grey() + theme_bw(base_size=16)
-het_plot <- het_plot_tmp + ggtitle("Observed vs. Expected Heterozygosity") + theme(axis.title.x=element_blank(), plot.title = element_text(vjust=1))  + guides(color=NULL) + xlim(0.37, 0.39)
+het_plot_tmp <- ggplot(het_df, aes(x=value, color=Heterozygosity, fill=Heterozygosity)) + geom_density() + scale_fill_grey() + scale_color_grey() + theme_bw(base_size=16)
+het_plot <- het_plot_tmp + ggtitle("Observed vs. Expected Heterozygosity") + theme(axis.title.x=element_blank(), plot.title = element_text(vjust=1), legend.title=element_blank(), legend.position="bottom")  + guides(color=NULL) + xlim(0.37, 0.39)
 print(het_plot)
 
 # Save plot as SVG and PDF
